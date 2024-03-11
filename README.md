@@ -9,3 +9,14 @@ The app will also be expandable so that other subjects can be practiced - at the
 One idea for the future would be to introduce a student chat that is monitored by the teachers.
 
 Translated with DeepL.com (free version)
+
+## Setup
+
+Clone this repo setup a venv and install django:
+
+``` bash
+python3 -m venv .venv
+source/.venv/bin/activate
+pip install --upgrade pip wheel setuptools
+pip install django
+```
