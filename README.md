@@ -20,3 +20,8 @@ source/.venv/bin/activate
 pip install --upgrade pip wheel setuptools
 pip install django
 ```
+
+Make migrations:
+
+```bash
+```
