@@ -12,7 +12,7 @@ Translated with DeepL.com (free version)
 
 ## Setup
 
-Clone this repo setup a venv and install django:
+Clone this repo, setup a venv and install django:
 
 ``` bash
 python3 -m venv .venv
@@ -21,7 +21,13 @@ pip install --upgrade pip wheel setuptools
 pip install django
 ```
 
-Make migrations:
+Apply default migrations from Django:
+
+```bash
+python manage.py migrate
+```
+
+Install Bootstrap:
 
 ```bash
 ```
