@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
 
@@ -13,7 +13,7 @@ def quiz(request):
 
 
 @require_http_methods(["GET", "POST"])
-def loginSeite(request):
+def login_view(request):
     if request.method == "POST":  # wurden Daten hierhin geschickt?
         benutzername = request.POST["username"]
         passwort = request.POST["password"]
@@ -29,6 +29,11 @@ def loginSeite(request):
             messages.error(request, "Benutzername oder Passwort nicht korrekt.")
 
     return render(request, "quiz/login.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("quiz")
 
 
 @require_http_methods(["GET", "POST"])
