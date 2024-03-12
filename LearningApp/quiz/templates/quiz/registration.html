@@ -1,0 +1,32 @@
+{% extends 'quiz/index.html' %}
+{% block content %}
+    {# Anmeldeformular Anfang #}
+    <div class="main">
+    <h3 class="formHeader">Registriere dich</h3>
+    <form method="POST">{% csrf_token %}
+        <label for="first">Vorname:</label>
+        <input type="text" id="first" name="first" placeholder="Vorname" required />
+
+        <label for="first">Nachname:</label>
+        <input type="text" id="last" name="last" placeholder="Nachname" required />
+
+        <label for="first">Nutzername:</label>
+        <input type="text" id="username" name="username" placeholder="Nutzername" required />
+
+        <label for="first">Email:</label>
+        <input type="text" id="email" name="email" placeholder="Email Adresse" required />
+
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password" placeholder="Passwort" required />
+
+        <div class="wrap">
+        <button type="submit">Registrieren</button>
+        </div>
+    </form>
+    <p class="formQuestion">
+        Du hast schon ein Konto? <br>
+        <a href="{% url 'login' %}" style="text-decoration: none;">Logge dich hier ein</a>
+    </p>
+    </div>
+    {# Anmeldeformular Ende #}
+{% endblock %}
