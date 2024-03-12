@@ -1,4 +1,4 @@
-# LearningApp
+# LearningApp - Django Project
 
 The idea behind the app is for children to have fun repeating and practicing what they have learned at school. 
 
@@ -8,7 +8,6 @@ The app will also be expandable so that other subjects can be practiced - at the
 
 One idea for the future would be to introduce a student chat that is monitored by the teachers.
 
-Translated with DeepL.com (free version)
 
 ## Setup
 
