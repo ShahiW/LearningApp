@@ -1,5 +1,14 @@
 /* Menü */
 /* Logo Learning View */
+
+.navbar.navbar-expand-lg {
+    background-color: #fd8102;    
+}
+
 a.navbar-brand.link-light {
     font-size: 2.5em;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    color: white;
 }
