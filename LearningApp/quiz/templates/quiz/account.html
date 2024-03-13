@@ -1,0 +1,17 @@
+{% extends 'quiz/index.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+            <div class="greeting">
+                <h1>Hallo, {{ user.username }}!</h1>
+            </div>
+            {% else %}
+            <div class="main-text" style="text-align: center;">
+                <p>Bitte melde dich erst an, um diesen Bereich sehen zu können</p>
+            </div>
+                <div class="wrap">
+                    <a class="btn btn-success" href="{% url 'home' %}" role="button">Zurück zur Hauptseite</a>
+                </div>
+            {% endif %}
+
+{% endblock %}

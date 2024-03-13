@@ -3,7 +3,8 @@
 
 <nav class="navbar shadow p-3 mb-4" style="background-color: #fd8102;">
     <div class="container-fluid">
-        <a class="navbar-brand link-light" href="{% url 'quiz' %}"><img src="{% static 'images/blue-m.svg' %}" alt="logo" />Learning App</a>
+        <a class="btn btn-success" href="{% url 'home' %}" role="button">Home</a>
+        <a class="btn btn-success" href="{% url 'account' %}" role="button">Konto</a>
         <div class="navbar-nav">
         {# Ergänze weiteres div mit class d-flex für Flexbox, um Login nach rechts zu verschieben #}
             <div class="d-flex">

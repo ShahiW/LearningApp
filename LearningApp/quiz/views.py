@@ -13,6 +13,11 @@ def quiz(request):
 
 
 @require_http_methods(["GET", "POST"])
+def account(request):
+    return render(request, "quiz/account.html")
+
+
+@require_http_methods(["GET", "POST"])
 def login_view(request):
     if request.method == "POST":  # wurden Daten hierhin geschickt?
         benutzername = request.POST["username"]
