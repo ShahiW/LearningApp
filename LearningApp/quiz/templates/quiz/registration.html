@@ -1,8 +1,7 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{% extends 'quiz/index.html' %}
 
 {% block content %}
-<div class="main">
+<div class="main-login">
     <div class="formHeader">
         <h3>Registriere dich</h3>
     </div>
@@ -24,7 +23,7 @@
                 <label for="password">Passwort:</label>
                 <input type="password" id="password" name="password" placeholder="Passwort" required />
 
-                <div class="wrap">
+                <div class="wrap-login">
                     <button type="submit">Registrieren</button>
                 </div>
         </form>
