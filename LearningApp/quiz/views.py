@@ -5,10 +5,9 @@ from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
 
 
-# from . models import *
 # Create your views here.
-@require_http_methods(["GET", "POST"])
-def quiz(request):
+
+def home(request):
     return render(request, "quiz/index.html")
 
 
@@ -59,4 +58,3 @@ def registration(request):
     else:
         return render(request, "quiz/registration.html")
     
-

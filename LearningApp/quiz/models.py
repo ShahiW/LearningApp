@@ -1,5 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+"""
+class User(AbstractUser):
+    LEHRER = 1
+    SCHÜLER = 2
+
+    ROLE_CHOICES = (
+        (LEHRER, 'Lehrer'),
+        (SCHÜLER, 'Schüler')
+    )
+    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True)
+
+
 
 class Schüler(models.Model):
     schüler = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -24,9 +38,13 @@ class Lehrer(models.Model):
     
 
 class Fach(models.Model):
-    name = models.CharField(max_length=100, null=True)
+    fach_name = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return self.name
+        return self.fach_name
     
 
+class Kategorie(models.Model):
+    fach_id = models.ForeignKey(Fach, on_delete=models.CASCADE)
+    kategorie_name = models.CharField(max_length=200, null=True)
+"""
