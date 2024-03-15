@@ -10,6 +10,9 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)  # keine klammern: hier soll die Funktion noch nicht ausgeführt werden
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title
+
 
 #class Subject(models.Model):
     #name = models.CharField(max_length=100)
