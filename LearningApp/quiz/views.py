@@ -8,7 +8,7 @@ from django.views.decorators.http import require_http_methods
 # Create your views here.
 
 def home(request):
-    return render(request, "quiz/index.html")
+    return render(request, "quiz/base.html")
 
 
 @require_http_methods(["GET", "POST"])
