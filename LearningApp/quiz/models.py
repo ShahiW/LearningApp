@@ -18,8 +18,8 @@ from django.db import models
 # Meine Models
 
 # Tabelle Fächer
-#class Subject(models.Model):
-    #name = models.CharField(max_length=100)
+class Subject(models.Model):
+    name = models.CharField(max_length=100)
 
 
 

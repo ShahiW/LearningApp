@@ -16,7 +16,7 @@ from django.shortcuts import render, redirect
 
 
 def home(request):
-    return render(request, 'quiz.base.html')
+    return render(request, 'quiz/base.html')
 
 
 
