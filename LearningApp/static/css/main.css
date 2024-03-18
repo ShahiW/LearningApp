@@ -1,7 +1,7 @@
 /* HOME */
 body {
-    background-image: url("../images/background.jpg");
-    background-color: #00c4ce;
+    /*background-image: url("../images/background.jpg");
+    background-color: #00c4ce;*/
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -37,7 +37,7 @@ body {
     padding-top: 5%;
     font-size: 1.5rem;
     text-align: center;
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -63,6 +63,7 @@ a.navbar-brand.link-light {
 }
 
 /* LOGIN-REGISTRATION */
+/*
 .main-login {
     position: relative;
     margin: 8% auto;
@@ -136,3 +137,4 @@ button {
     justify-content: center;
     align-items: center;
 }
+*/

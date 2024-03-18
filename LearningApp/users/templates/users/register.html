@@ -4,8 +4,8 @@
 
     <div class='main-text'>
 
-        <form method="POST">
-            {% csrf token %}
+        <form method="POST">{% csrf_token %}
+            
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
                 {{ form }}
@@ -23,4 +23,4 @@
 
     </div>
 
-{% endblock content %}
+{% endblock %}
