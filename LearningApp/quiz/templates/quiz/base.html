@@ -18,7 +18,13 @@
 
     {# Content Start #}   
     {% block content %}
-        
+        <div class='fächer'>
+            {% for subject in subjects %}
+                <div class='container d-flex'>
+                    <h1>{{ subject.name }}</h1>
+                </div>
+            {% endfor %}
+            </div>
     {% endblock %}
     {# Content End #}  
     

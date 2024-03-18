@@ -57,7 +57,8 @@ a.navbar-brand.link-light {
     font-size: 2.5em;
 }
 
-.navbar-expand-lg .navbar-nav .nav-link {
+.navbar-expand-lg .navbar-nav .nav-link,
+.navbar-brand {
     color: white;
 }
 

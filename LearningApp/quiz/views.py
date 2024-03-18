@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import Subject
 #from .models import Post Beispiel
 
 #from django.contrib.auth import authenticate, login, logout
@@ -16,7 +17,11 @@ from django.shortcuts import render, redirect
 
 
 def home(request):
-    return render(request, 'quiz/base.html')
+    content = {
+        'subjects': Subject.objects.all()
+    }
+
+    return render(request, "quiz/base.html", content)
 
 
 
