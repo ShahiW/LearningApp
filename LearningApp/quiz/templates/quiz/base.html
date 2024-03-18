@@ -12,38 +12,16 @@
 </head>
 
 <body>
-{% include 'quiz/menu.html' %}
+{#{% include 'quiz/menu.html' %}#}
 
     <div class="fullscreen">
+
     {# Content Start #}   
     {% block content %}
-        <div class="homeContent">
-            {% if user.is_authenticated %}
-                <div class="greeting">
-                    <h1>Hallo, {{ user.username }}!</h1>
-                </div>
-            {% else %}
-                <div class="main-text">
-                    <p>Du musst dich erst einloggen, um anzufangen. </br>
-                    Du hast noch kein Konto?</br>
-                    Dann mach dir hier schnell eins!</p>
-                </div>
-                <div class="wrap">
-                    <a class="btn btn-success" href="{% url 'registration' %}" role="button">Leg ein Konto an</a>
-                </div>
-            {% endif %}
-            
-            <div class='blog-posts'>
-            {% for post in posts %}
-                <h1>{{ post.title }}</h1>
-                <p>By {{ post.author }} on {{ post.date_posted }}</p>
-                <p>{{ post.content }}</p>
-            {% endfor %}
-            </div>
-            
-        </div>
+        
     {% endblock %}
-    {# Content End #}         
+    {# Content End #}  
+    
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
