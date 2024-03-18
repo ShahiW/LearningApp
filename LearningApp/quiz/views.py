@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from .models import Post
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -8,7 +10,11 @@ from django.views.decorators.http import require_http_methods
 # Create your views here.
 
 def home(request):
-    return render(request, "quiz/base.html")
+    context = {
+        'posts': Post.objects.all()
+    }
+
+    return render(request, "quiz/base.html", context)
 
 
 @require_http_methods(["GET", "POST"])
