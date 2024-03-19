@@ -1,7 +1,7 @@
 /* HOME */
 body {
-    background-image: url("../images/background.jpg");
-    background-color: #00c4ce;
+    /*background-image: url("../images/background.jpg");
+    background-color: #00c4ce;*/
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -26,111 +26,4 @@ body {
     .fullscreen {
         background-image: url("image-1960.jpg");
     }
-}
-
-.greeting {
-    color: #ffffff;
-    text-align: center;
-}
-
-.main-text {
-    padding-top: 5%;
-    font-size: 1.5rem;
-    text-align: center;
-    color: #ffffff;
-}
-
-.wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3% ;
-}
-
-/* NAVBAR */
-.navbar.navbar-expand-lg {
-    background-color: #fd8102;
-}
-
-a.navbar-brand.link-light {
-    font-size: 2.5em;
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-    color: white;
-}
-
-/* LOGIN-REGISTRATION */
-.main-login {
-    position: relative;
-    margin: 8% auto;
-    min-height: 60%;
-    width: 50%;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
-    background: white;
-    padding: 0%;
-
-}
-
-.formHeader {
-    background-color: rgb(47, 45, 45);
-    text-align: center;
-    padding: 2%;
-    color: white;
-}
-
-.formContent {
-    padding: 3% 3% 0% 3%;
-}
-
-.formQuestion {
-    text-align: center;
-    padding: 0% 0% 2% 0%;
-}
-
-.backHome {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0% 0% 5% 0%;
-}
-
-label {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: left;
-    color: #555;
-    font-weight: bold;
-}
-
-
-input {
-    display: block;
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-button {
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    background-color: #4CAF50;
-    width: 30%;
-    font-size: 16px;
-}
-
-.wrap-login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
