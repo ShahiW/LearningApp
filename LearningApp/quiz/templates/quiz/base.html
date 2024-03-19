@@ -16,6 +16,13 @@
 
     <div class="fullscreen">
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     {# Content Start #}   
     {% block content %}
         <div class='fächer'>

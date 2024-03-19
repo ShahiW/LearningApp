@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Subject
 #from .models import Post Beispiel
 
@@ -21,7 +21,7 @@ def home(request):
         'subjects': Subject.objects.all()
     }
 
-    return render(request, "quiz/base.html", content)
+    return render(request, 'quiz/base.html', content)
 
 
 
