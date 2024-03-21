@@ -24,6 +24,6 @@ body {
 
 @media (min-width:1260px) {
     .fullscreen {
-        background-image: url("image-1960.jpg");
+        background-image: url("../images/background.jpg");
     }
 }
