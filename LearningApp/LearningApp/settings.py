@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "quiz.apps.QuizConfig",
     "users.apps.UsersConfig",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -128,3 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
