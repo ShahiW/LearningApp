@@ -3,6 +3,16 @@ body {
     /*background-image: url("../images/background.jpg");
     background-color: #00c4ce;*/
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
 }
 
 .fullscreen {
@@ -26,4 +36,27 @@ body {
     .fullscreen {
         background-image: url("../images/background.jpg");
     }
+}
+
+/* profile.html */
+.content-section {
+    background: #ffffffd2;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: #444444;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+    color: #444444;
 }
