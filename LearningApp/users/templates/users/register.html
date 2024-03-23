@@ -7,7 +7,7 @@
         <form method="POST">{% csrf_token %}
             
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Melde dich jetzt an</legend>
+                <legend class="border-bottom mb-4" id="legende">Melde dich jetzt an</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
