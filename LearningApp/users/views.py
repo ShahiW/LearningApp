@@ -19,8 +19,21 @@ def register(request):
 
 @login_required
 def profile(request):
-    u_form = UserUpdateForm()
-    p_form = ProfileUpdateForm()
+    if request.method == "POST":  # Sind Daten da?
+        u_form = UserUpdateForm(request.POST, instance=request.user)  # neue Daten kommen
+        p_form = ProfileUpdateForm(
+                                request.POST,
+                                request.FILES,  # neue Bilder kommen
+                                instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():  # Sind Daten valide? Wenn ja: speichern
+            u_form.save()
+            p_form.save()
+            messages.success(request, "Profil erfolgreich aktualisiert!")
+            return redirect("profile")
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
 
     # ans Template übergeben
     context = {
