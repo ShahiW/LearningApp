@@ -24,8 +24,8 @@ def profile(request):
 
     # ans Template übergeben
     context = {
-        'user_update_form': u_form,
-        'profile_update_form': p_form,
+        'u_form': u_form,
+        'p_form': p_form,
     }
 
     return render(request, 'users/profile.html', context)
