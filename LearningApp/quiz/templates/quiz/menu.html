@@ -51,12 +51,12 @@
     {% if user.is_authenticated %}
         <form method="POST" action="{% url 'logout' %}" class="nav-item">
         {% csrf_token %}
-        <button type="submit" class="nav-link btn btn-link">Logout</button>
+        <button type="submit" class="nav-link btn btn-link">Abmelden</button>
         </form>
         
         <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
     {% else %}
-        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'login' %}">Anmelden</a>
         <a class="nav-item nav-link" href="{% url 'register' %}">Registrieren</a>
     {% endif %}
     </div>
