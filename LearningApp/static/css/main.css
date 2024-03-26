@@ -38,11 +38,6 @@ h6 {
     }
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-}
-
 /* profile.html */
 .content-section {
     background: #ffffffe3;
@@ -73,10 +68,23 @@ h6 {
     color: #444444;
 }
 
-/* register.html */
-.main-text-register {
+/* register.html + login.html */
+.main-text {
     padding: 20px 25px;
     background: #ffffffe3;
     color: #444444;
     border-radius: 20px;
+}
+
+/* menu.html */
+.profile-picture {
+    height: 35px;
+    width: 35px;
+    border-radius: var(--borderRadius-full, 50%) !important;
+}
+
+.navbar.navbar-expand-lg {
+    display: flex;
+    padding: var(--base-size-16, 16px);
+    gap: var(--base-size-12, 12px);
 }

@@ -22,6 +22,3 @@ def home(request):
     }
 
     return render(request, 'quiz/base.html', content)
-
-
-
