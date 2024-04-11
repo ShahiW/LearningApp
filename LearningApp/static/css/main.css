@@ -15,6 +15,10 @@ h6 {
     color: #444444;
 }
 
+p {
+    color: black;
+}
+
 .fullscreen {
     background-repeat: no-repeat;
     background-position: center;
@@ -22,8 +26,9 @@ h6 {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
 
 @media (max-width: 1259px) {
@@ -87,4 +92,15 @@ h6 {
     display: flex;
     padding: var(--base-size-16, 16px);
     gap: var(--base-size-12, 12px);
+}
+
+/* deutsch.html */
+.title {
+    width: 50%;
+    text-align: center;
+}
+
+.content {
+    width: 80%;
+    text-align: center;
 }

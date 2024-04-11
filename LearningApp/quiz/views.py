@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Subject
-#from .models import Post Beispiel
+from .models import Categories
 
 #from django.contrib.auth import authenticate, login, logout
 #from django.contrib.auth.models import User
@@ -22,3 +22,21 @@ def home(request):
     }
 
     return render(request, 'quiz/base.html', content)
+
+
+def deutsch(request):
+    content = {"categorie": Categories.objects.all()}
+
+    return render(request, "quiz/deutsch.html", content)
+
+
+def mathe(request):
+    content = {"subjects": Subject.objects.all()}
+
+    return render(request, "quiz/mathe.html", content)
+
+
+def about(request):
+    content = {"subjects": Subject.objects.all()}
+
+    return render(request, "quiz/about.html", content)

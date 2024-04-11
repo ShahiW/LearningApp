@@ -1,0 +1,22 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+<div class="container text-center">
+    <div class="row mt-5">
+        <div class="col" id="title">
+            <h1>Deutsch Quiz</h1>
+        </div>
+    </div>
+
+    <div class="row mt-5" id="content">
+        <h2>Kategorien</h2>
+    </div>
+
+    <div class="row mt-4">
+        {{ content }}
+        <!--{% for categorie in categories %}
+            <button class="btn btn-outline-info" href="#">{{ categorie }}</button>
+        {% endfor %}-->
+    </div>
+
+</div>
+{% endblock %}
