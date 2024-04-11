@@ -12,11 +12,10 @@
     </div>
 
     <div class="row mt-4">
-        {{ content }}
         <!-- ToDo!!! Code um die Kategorien aus der Datenbank zu laden!! -->
-        <!--{% for categorie in categories %}
-            <button class="btn btn-outline-info" href="#">{{ categorie }}</button>
-        {% endfor %}-->
+        {% for categorie in categories %}
+            {{ context }}
+        {% endfor %}
     </div>
 
 </div>

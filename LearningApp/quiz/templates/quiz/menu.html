@@ -31,12 +31,11 @@
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
         <ul class="dropdown-menu">
-            <li>
-            <a class="dropdown-item" href={% url 'deutsch' %}>Deutsch</a>
-            </li>
-            <li>
-            <a class="dropdown-item" href={% url 'mathe' %}>Mathe</a>
-            </li>
+            {% for subject in subjects %}
+                <li>
+                <a class="dropdown-item" href="">{{ subject }}</a>
+                </li>
+            {% endfor %}
             
             {% comment %}
             <li>
