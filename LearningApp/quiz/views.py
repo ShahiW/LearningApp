@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .models import Subject
-from .models import Categories
+from .models import Subject, Categories
 
 #from django.contrib.auth import authenticate, login, logout
 #from django.contrib.auth.models import User
@@ -17,26 +16,21 @@ from .models import Categories
 
 
 def home(request):
-    content = {
-        'subjects': Subject.objects.all()
-    }
-
-    return render(request, 'quiz/base.html', content)
+    return render(request, 'quiz/base.html')
 
 
 def deutsch(request):
-    content = {"categorie": Categories.objects.all()}
+    context = {'categoriess': Subject.objects.all()}
 
-    return render(request, "quiz/deutsch.html", content)
+    return render(request, "quiz/deutsch.html", context)
 
 
 def mathe(request):
-    content = {"subjects": Subject.objects.all()}
+    context = {"subjects": Subject.objects.all()}
 
-    return render(request, "quiz/mathe.html", content)
+    return render(request, "quiz/mathe.html", context)
 
 
 def about(request):
-    content = {"subjects": Subject.objects.all()}
 
-    return render(request, "quiz/about.html", content)
+    return render(request, "quiz/about.html")
