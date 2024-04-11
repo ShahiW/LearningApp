@@ -33,7 +33,7 @@
         <ul class="dropdown-menu">
             {% for subject in subjects %}
                 <li>
-                <a class="dropdown-item" href="">{{ subject }}</a>
+                <a class="dropdown-item" href="{% url subject|lower %}">{{ subject }}</a>
                 </li>
             {% endfor %}
             

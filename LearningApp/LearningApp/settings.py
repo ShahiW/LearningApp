@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'LearningApp.context_processors.show_subjects',  # add subjects e.g. in dropdown menu
             ],
         },
     },
