@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Subject, Categories
+from .models import Subject
 
 #from django.contrib.auth import authenticate, login, logout
 #from django.contrib.auth.models import User

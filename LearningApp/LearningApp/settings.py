@@ -58,16 +58,16 @@ ROOT_URLCONF = 'LearningApp.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'LearningApp/templates', BASE_DIR/'quiz/templates'], 
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'LearningApp.context_processors.show_subjects',  # add subjects e.g. in dropdown menu
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "LearningApp/templates", BASE_DIR / "quiz/templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "LearningApp.context_processors.sorted_subjects",  # add subjects e.g. in dropdown menu
             ],
         },
     },
