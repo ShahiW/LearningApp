@@ -13,8 +13,8 @@
 
     <div class="row mt-4">
         <!-- ToDo!!! Code um die Kategorien aus der Datenbank zu laden!! -->
-        {% for categorie in categories %}
-            {{ context }}
+        {% for category in categoriess %}
+            <a class="btn btn-success mt-4" href="{% url 'quizzing' %}" id="category-text" role="button">{{ category }}</a>
         {% endfor %}
     </div>
 

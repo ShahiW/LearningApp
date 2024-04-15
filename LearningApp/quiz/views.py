@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Subject
+from .models import Categories, QuestionAnswer
 
 #from django.contrib.auth import authenticate, login, logout
 #from django.contrib.auth.models import User
@@ -20,13 +20,12 @@ def home(request):
 
 
 def deutsch(request):
-    context = {'categoriess': Subject.objects.all()}
-
+    context = {"categoriess": Categories.objects.filter(subject__name="Deutsch")}
     return render(request, "quiz/deutsch.html", context)
 
 
 def mathe(request):
-    context = {"subjects": Subject.objects.all()}
+    context = {"categoriess": Categories.objects.filter(subject__name='Mathe')}
 
     return render(request, "quiz/mathe.html", context)
 
@@ -34,3 +33,9 @@ def mathe(request):
 def about(request):
 
     return render(request, "quiz/about.html")
+
+
+def quizzing(request):
+    context = {'questions': QuestionAnswer.objects.all()}
+    
+    return render(request, "quiz/quizzing.html", context)
