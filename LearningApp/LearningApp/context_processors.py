@@ -1,4 +1,5 @@
 from quiz.models import Subject
 
 def sorted_subjects(request):
-    return {'subjects': Subject.objects.all()}
+    sorted_subjects = {s.name: s for s in sorted(Subject.objects.all(), key=lambda el: el.name)}
+    return {'subjects': sorted_subjects}
