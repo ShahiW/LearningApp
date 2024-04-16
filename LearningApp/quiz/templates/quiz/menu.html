@@ -11,6 +11,7 @@
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
@@ -22,32 +23,18 @@
         <a class="nav-link" href="#">Minispiele</a>
         </li>
 
-        {% comment %}
-        <li class="nav-item">
-        <a class="nav-link" href="#">Mehr Reiter</a>
-        </li>
-        {% endcomment %}
-
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
-        <ul class="dropdown-menu">
-            {% for subject in subjects %}
-                <li>
-                <a class="dropdown-item" href="{% url subject|lower %}">{{ subject }}</a>
-                </li>
-            {% endfor %}
-            
-            {% comment %}
-            <li>
-            <a class="dropdown-item" href="#">Für mehr Fächer</a>
-            </li>
-            {% endcomment %}
+            <ul class="dropdown-menu">
+                {% for subject in subjects %}
+                    <li>
+                    <a class="dropdown-item" href="{% url 'categories' subject %}">{{ subject }}</a>
+                    </li>
+                {% endfor %}
 
-        </ul>
+            </ul>
         </li>
-
     </ul>
-
     </div>
     
     {# Navbar rechte Seite #}

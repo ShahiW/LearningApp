@@ -27,7 +27,7 @@ class Subject(models.Model):
 
 # Tabelle Kategorien
 class Categories(models.Model):
-    subject_id = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -36,11 +36,12 @@ class Categories(models.Model):
 
 # Tabelle Fragen und Antworten
 class QuestionAnswer(models.Model):
-    quiz_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Categories, on_delete=models.CASCADE)
     question = models.TextField()
     answer = models.TextField()
 
-
+    def __str__(self):
+        return self.question
 
 
 
