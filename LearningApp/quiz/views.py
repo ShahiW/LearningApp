@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Categories, Subject
+from django.http import Http404
 
 #from django.contrib.auth import authenticate, login, logout
 #from django.contrib.auth.models import User
@@ -19,34 +20,19 @@ def home(request):
     return render(request, 'quiz/base.html')
 
 
-#def deutsch(request):
-    context = {"categoriess": Categories.objects.filter(subject__name="Deutsch")}
-    return render(request, "quiz/quiz.html", context)
-
-
-#def mathe(request):
-    context = {"categoriess": Categories.objects.filter(subject__name='Mathe')}
-
-    return render(request, "quiz/quiz.html", context)
-
-
 def about(request):
 
     return render(request, "quiz/about.html")
 
 
-def subjects(request):
-    context = {
-        'subjects': Subject.objects.all()
-    }
+def categories(request, subject: str):
+    if Subject.objects.filter(name__iexact=subject).exists():
+        context = {
+            'categories': Categories.objects.filter(subject__name__iexact=subject),  # iexact um upper-lower-case zu ignorieren
+            'subject': subject
+        }
 
-    return render(request, 'quiz/subjects', context)
+        return render(request, "quiz/quizzing.html", context)
 
-
-def quizzing(request):
-    context = {
-        'subjects': Subject.objects.all()
-    }
-
-    return render(request, "quiz/quizzing.html", context)
-
+    else:
+        raise Http404('Ooops! Diese Seite existiert leider nicht.')

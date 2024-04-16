@@ -8,7 +8,7 @@
     </div>
 
     <div class="row mt-5" id="content">
-        <h2>{{ selected_category }}</h2>
+        <h2>{{ subject }}</h2>
     </div>
 
     <div class="row mt-4">
@@ -17,8 +17,8 @@
     </div>
 
     <div class="row mt-4">
-    {% for question in questions %}
-        <a class="btn btn-success mt-4" id="category-text" role="button">{{ question }}</a>
+    {% for category in categories %}
+        <a class="btn btn-success mt-4" id="category-text" role="button">{{ category }}</a>
     {% endfor %}
 </div>
 

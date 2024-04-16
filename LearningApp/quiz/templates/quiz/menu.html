@@ -28,7 +28,7 @@
             <ul class="dropdown-menu">
                 {% for subject in subjects %}
                     <li>
-                    <a class="dropdown-item" href="{% url 'quizzing' %}">{{ subject }}</a>
+                    <a class="dropdown-item" href="{% url 'categories' subject %}">{{ subject }}</a>
                     </li>
                 {% endfor %}
 
