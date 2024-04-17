@@ -1,0 +1,29 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+
+<div class="container mt-5 pt-5">
+    <!-- Added the Geeksforgeeks heading here -->
+    <h1 style="color: green; text-align: center;">{{ category }}</h1>
+
+    
+        <div class="form-group">   
+            <form method="POST">{% csrf_token %}
+            
+                <fieldset class="form-group">
+                    {% for question in questions %}
+                        <p>{{ question }}</p>
+                    {% endfor %}
+                </fieldset>
+
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Weiter</button>
+                </div>
+
+            </form>
+
+
+        </div>
+
+</div>
+
+{% endblock %}
