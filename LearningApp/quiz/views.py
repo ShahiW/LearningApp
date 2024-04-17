@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Categories, Subject
+from .models import Category, Subject
 from django.http import Http404
 
 #from django.contrib.auth import authenticate, login, logout
@@ -25,14 +25,15 @@ def about(request):
     return render(request, "quiz/about.html")
 
 
-def categories(request, subject: str):
+def category(request, subject: str):
     if Subject.objects.filter(name__iexact=subject).exists():
         context = {
-            'categories': Categories.objects.filter(subject__name__iexact=subject),  # iexact um upper-lower-case zu ignorieren
+            'categories': Category.objects.filter(subject__name__iexact=subject),  # iexact um upper-lower-case zu ignorieren
             'subject': subject
         }
 
-        return render(request, "quiz/quizzing.html", context)
+        return render(request, "quiz/categories.html", context)
 
     else:
         raise Http404('Ooops! Diese Seite existiert leider nicht.')
+    
