@@ -1,13 +1,11 @@
 from django.db import models
 import uuid
 import random
-
 # Merke: nach jedem neuen Model makemigrations und migrate!!!
 
 
 # Meine Models
 
-# Quiz Model
 class BaseModel(models.Model):
     uid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
     created_at = models.DateField(auto_now_add=True)
@@ -23,7 +21,7 @@ class Subject(BaseModel):
 
     def __str__(self):
         return self.name
-    
+
 
 # Tabelle Kategorien
 class Category(BaseModel):
@@ -32,11 +30,10 @@ class Category(BaseModel):
 
     def __str__(self):
         return self.name
-    
 
-# Tabelle Fragen
+
 class Question(BaseModel):
-    laq = models.ForeignKey(Category, related_name="laq", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     question = models.CharField(max_length=100)
     marks = models.IntegerField(default=5)
 
@@ -53,9 +50,8 @@ class Question(BaseModel):
                 {"answer": answer_obj.answer, "is_correct": answer_obj.is_correct}
             )
         return data
-    
 
-# Tabelle Antworten
+
 class Answer(BaseModel):
     question = models.ForeignKey(
         Question, related_name="question_answer", on_delete=models.CASCADE
@@ -65,18 +61,4 @@ class Answer(BaseModel):
 
     def __str__(self) -> str:
         return self.answer
-
-
-# Tabelle Fragen und Antworten
-#class QuestionAnswer(models.Model):
-    #quiz = models.ForeignKey(Category, on_delete=models.CASCADE)
-    #question = models.TextField()
-    #answer = models.TextField()
-
-    #def __str__(self):
-        #return self.question
-
-
-
-
-
+    

@@ -11,9 +11,9 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profil'
     
-    def save(self):
+    def save(self, *args, **kwargs):
         # Speichere die Bilddatei. Das wäre eh passiert. Aber es soll noch eine Funktionalität ergänzt werden.
-        super().save()  
+        super(Profile, self).save(*args, **kwargs)  
 
         # Öffne die Bilddatei
         imgage = Image.open(self.image.path)  
