@@ -1,29 +1,37 @@
 {% extends 'quiz/base.html' %}
 {% block content %}
 
-<div class="container mt-5 pt-5">
-    <!-- Added the Geeksforgeeks heading here -->
-    <h1 style="color: green; text-align: center;">{{ category }}</h1>
+<div class="qa-main">
 
-    
-        <div class="form-group">   
-            <form method="POST">{% csrf_token %}
-            
-                <fieldset class="form-group">
-                    {% for question in questions %}
-                        <p>{{ question }}</p>
-                    {% endfor %}
-                </fieldset>
+    <div class="qa-title" id="category">
+        <h1>{{ category }}</h1>
+    </div>
 
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Weiter</button>
+    <div class="container-test">
+        <div class="instruction"><b>Mach bitte ein Häkchen vor die richtige Antwort</b><hr></div>
+        <div class="questions">
+
+                <div class="question"><b>Frage: </b> 
+                    {{ question }}
                 </div>
 
-            </form>
-
+                {# Antwort Buttons #}
+                {% for answer in answers %}
+                    <a class="btn btn-success" href="{% url 'check_answer' answer.id %}" role="button">{{ answer }}</a>
+                {% endfor %}
 
         </div>
+
+        {# Nach "weiter" soll das Ergebnis/die Punktzahl kommen #}
+        {% if  %}
+        <div class="qa-button">
+            <button class="btn btn-success" type="submit">Weiter</button>
+        </div>
+        {% endif %}
+
+    </div>
 
 </div>
 
 {% endblock %}
+

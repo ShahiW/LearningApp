@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
-import random
-# Merke: nach jedem neuen Model makemigrations und migrate!!!
+from django.contrib.auth.models import User
 
 
 # Meine Models
@@ -40,17 +39,6 @@ class Question(BaseModel):
     def __str__(self) -> str:
         return self.question
 
-    def get_answers(self):
-        answer_objs = list(Answer.objects.filter(question=self))
-        data = []
-        random.shuffle(answer_objs)
-
-        for answer_obj in answer_objs:
-            data.append(
-                {"answer": answer_obj.answer, "is_correct": answer_obj.is_correct}
-            )
-        return data
-
 
 class Answer(BaseModel):
     question = models.ForeignKey(
@@ -62,3 +50,10 @@ class Answer(BaseModel):
     def __str__(self) -> str:
         return self.answer
     
+
+class Score(BaseModel):
+    user = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, related_name="+", on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, related_name="+", on_delete=models.DO_NOTHING)
+    question = models.ForeignKey(Question, related_name="+", on_delete=models.DO_NOTHING)
+    value = models.IntegerField(null=False)

@@ -6,7 +6,12 @@ body {
     color: #ffffff;
 }
 
-h1,
+h1 {
+    color: green;
+    text-align: center;
+}
+
+
 h2,
 h3,
 h4,
@@ -30,6 +35,20 @@ p {
     justify-content: space-evenly;
     align-items: stretch;
 }
+
+.grid-container {
+    display: grid;
+    row-gap: 25px;
+    grid-template-columns: auto;
+    padding: 10px;
+}
+
+.grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 25px;
+}
+
 
 @media (max-width: 1259px) {
     .fullscreen {
@@ -94,17 +113,47 @@ p {
     gap: var(--base-size-12, 12px);
 }
 
-/* deutsch.html */
-.title {
-    width: 50%;
-    text-align: center;
-}
 
-.content {
-    width: 80%;
-    text-align: center;
-}
-
-.category-text {
+/* quiz.html */
+.questions, .answers {
+    margin-top: 4px;
     color: #444444;
+    padding: 10px;
+}
+
+.label {
+    display: block;
+    padding-left: 10px;
+}
+
+.question {
+    text-align: justify;
+    padding-left: 2%;
+}
+
+.qa-title {
+    margin-top: 1%;
+    margin-bottom: 10%;
+}
+
+.qa-button {
+    text-align: right;
+}
+
+.instruction {
+    text-align: center;
+    color: #444444;
+}
+
+
+.container-test {
+    background-color: #c1ddf390;
+    padding: 1em;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+.qa-main {
+    margin-top: 35px;
 }

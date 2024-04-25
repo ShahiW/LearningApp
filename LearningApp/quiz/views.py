@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
-from .models import Category, Subject, Question
+from .models import Category, Subject, Question, Answer, Score
 from django.http import Http404
-import random
+from django.contrib import messages
 
 
 def home(request):
@@ -28,43 +27,56 @@ def categories(request, subject: str):
         raise Http404("Ooops! Diese Seite existiert leider nicht.")
     
 
-def quiz(request, id):
-    context = {
-        'category': Category.objects.get(id=id),
-        'questions': Question.objects.filter(category__id=id),
+def quiz(request, c_id):
+    # if question.is_answered:
+    # question = Question.objects.filter(category__id=c_id).except(is_answered=True).first()
+    user = request.user
+    question = Question.objects.filter(category__id=c_id).first()
+    if question:
+        context = {
+            "category": Category.objects.get(id=c_id),
+            "question": question,
+            "answers": Answer.objects.filter(question__id=question.id),
         }
-    return render(request, 'quiz/quiz.html', context)
+
+        return render(request, "quiz/quiz.html", context)
+    else:
+        raise Http404("Ooops! Diese Frage existiert leider nicht.")
+
+    # else:
+    messages.info(
+        request,
+        f"Toll { user.username }! Du hast das Quiz beendet. Dein Punktestand ist: <score>",
+    )
 
 
+def check_answer(request, a_id):
+    answer = Answer.objects.get(id=a_id)
+    question = answer.question
+    right_answer = Answer.objects.get(is_correct=True, question=question)
+    category = question.category
+    subject = category.subject
+    user = request.user
 
-def get_quiz(request):
-    try:
-        question_objs = Question.objects.all()
+    if answer.is_correct:
+        score = Score(
+            user = user,
+            subject = subject,
+            category = category,
+            question = question,
+            value = question.marks,
+        )
+        score.save()
+    
+    else:
+        messages.info(request, f"Leider falsch. Die richtige Antwort ist { right_answer }")
+        score = Score(
+            user = request.user,
+            subject = subject,
+            category = category,
+            question = question,
+            value = 0,
+        )
+        score.save()
 
-        if request.GET.get("category"):
-            question_objs = question_objs.filter(
-                category__name__icontains=request.GET.get("category")
-            )
-
-        question_objs = list(question_objs)
-        data = []
-        random.shuffle(question_objs)
-
-        for question_obj in question_objs:
-            data.append(
-                {
-                    "uid": question_obj.id,
-                    "category": question_obj.category.name,
-                    "question": question_obj.question,
-                    "marks": question_obj.marks,
-                    "answer": question_obj.get_answers(),
-                }
-            )
-
-        payload = {"status": True, "data": data}
-
-        return JsonResponse(payload)  # Return JsonResponse
-
-    except Exception as e:
-        print(e)
-        return HttpResponse("Something went wrong")
+    return quiz(request, category.id)
