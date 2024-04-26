@@ -45,7 +45,7 @@
         {% csrf_token %}
         <button type="submit" class="nav-link btn btn-link">Abmelden</button>
         </form>
-        <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
+        <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
         <img class="profile-picture" src="{{user.profile.image.url}}" alt="Profilbild">
     {% else %}
         <a class="nav-item nav-link" href="{% url 'login' %}">Anmelden</a>
