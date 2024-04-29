@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 # Meine Models
 
+# Base Model, von dem geerbt wird
 class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
     created_at = models.DateField(auto_now_add=True)
@@ -17,6 +18,18 @@ class BaseModel(models.Model):
 # Tabelle Fächer
 class Subject(BaseModel):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+# Tabelle Klassen
+class Classroom(BaseModel):
+    name = models.CharField(max_length=10)
+    subjects = models.ManyToManyField(Subject)
+
+    class Meta:
+        ordering = ["name"]
 
     def __str__(self):
         return self.name

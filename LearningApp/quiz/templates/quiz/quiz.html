@@ -8,26 +8,28 @@
     </div>
 
     <div class="container-test">
-        <div class="instruction"><b>Mach bitte ein Häkchen vor die richtige Antwort</b><hr></div>
-        <div class="questions">
+        <div class="instruction"><b>Klicke auf die richtige Antwort</b><hr></div>
+        <div class="grid-container question-answer">
 
                 <div class="question"><b>Frage: </b> 
                     {{ question }}
                 </div>
 
                 {# Antwort Buttons #}
-                {% for answer in answers %}
-                    <a class="btn btn-success" href="{% url 'check_answer' answer.id %}" role="button">{{ answer }}</a>
-                {% endfor %}
-
+                {# IDEE: mit sliceing jede antwort einzeln ansprechen und ins grid layout packen. Grid layout: row 1, col1 und col2. row2, col1 und col2 #}
+                <!--<div class="grid-container answers">-->
+                    {% for answer in answers %}
+                    <!--<div class="grid-item answer-button">-->
+                        <a class=" grid-item btn btn-success" href="{% url 'check_answer' answer.id %}" role="button">{{ answer }}</a>
+                    <!--</div>-->
+                    {% endfor %}
+                <!--</div>-->
         </div>
 
         {# Nach "weiter" soll das Ergebnis/die Punktzahl kommen #}
-        {% if  %}
         <div class="qa-button">
             <button class="btn btn-success" type="submit">Weiter</button>
         </div>
-        {% endif %}
 
     </div>
 

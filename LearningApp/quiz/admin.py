@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Subject, Category, Question, Answer
+from .models import Subject, Category, Question, Answer, Classroom
 
 # Register your models here.
 admin.site.register(Subject)
 admin.site.register(Category)
 admin.site.register(Question)
 admin.site.register(Answer)
-
+admin.site.register(Classroom)

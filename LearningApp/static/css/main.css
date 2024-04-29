@@ -129,6 +129,7 @@ p {
 .question {
     text-align: justify;
     padding-left: 2%;
+    color: #444444;
 }
 
 .qa-title {
@@ -153,7 +154,3 @@ p {
     margin-top: 10px;
 }
 
-
-.qa-main {
-    margin-top: 35px;
-}
