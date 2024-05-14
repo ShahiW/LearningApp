@@ -1,0 +1,41 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+
+<div class="qa-main">
+
+    <div class="qa-title" id="category">
+        <h1>{{ category }}</h1>
+    </div>
+
+    <div class="container-test">
+        
+        <div class="grid-container question-answer">
+
+                <div class="question"><b>Geschafft!</br> Du hast das Quiz beendet.</br> Deine Punktzahl ist: </b> 
+                {% for key, value in score.items %}
+                    {{ value }}
+                {% endfor %}
+                </div>
+
+
+                {# Antwort Buttons #}
+                {# IDEE: mit sliceing jede antwort einzeln ansprechen und ins grid layout packen. Grid layout: row 1, col1 und col2. row2, col1 und col2 #}
+                <!--<div class="grid-container answers">-->
+                    {% for answer in answers %}
+                    <!--<div class="grid-item answer-button">-->
+                        <a class=" grid-item btn btn-success" href="{% url 'check_answer' answer.id %}" role="button">{{ answer }}</a>
+                    <!--</div>-->
+                    {% endfor %}
+                <!--</div>-->
+        </div>
+
+        {# Nach "weiter" soll das Ergebnis/die Punktzahl kommen #}
+        <div class="qa-button">
+            <a class="btn btn-success" href="{% url 'home' %}">Weiter</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
