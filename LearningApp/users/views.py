@@ -42,8 +42,3 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
-
-
-def passwort_reset_done(request):
-    messages.success(request, "Du hast dein Passwort erfolgreich zurückgestzt! Du kannst dich jetzt einloggen.")
-    return redirect('login')
