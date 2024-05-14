@@ -2,6 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+{% if form.errors %}
+<p>Dein  Username und/oder dein Password sind falsch. Bitte versuch es erneut.</p>
+{% endif %}
+
     <div class='main-text'>
 
         <form method="POST">{% csrf_token %}
@@ -18,6 +22,10 @@
         <div class="border-top pt-3">
             <small class="text-muted">
                 Du hast noch keinen Account? <a class="ml-2" href="{% url 'register' %}">Hier registrieren</a>
+            </small>
+        </br>
+            <small class="text-muted">
+                Passwort vergessen? <a class="ml-2" href="{% url 'password_reset' %}">Hier zurücksetzen</a>
             </small>
         </div>
 

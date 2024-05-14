@@ -15,26 +15,27 @@
 {% include 'quiz/menu.html' %}
 
 <div class="fullscreen">
-    <div class="messages">
-        <div class="row">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
+    <div class="grid-container">
+        <div class="main">
+                {% block content %}{% endblock %}
         </div>
-    </div>
-
-    <div class="main">
-        {% block content %}{% endblock %}
-    </div>
-
-    <footer>
-        <!-- FOOTER HERE -->
-    </footer>
     
+        <div class="messages">
+            <div class="row">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+            </div>
+        </div>
+
+        <footer>
+            <!-- FOOTER HERE -->
+        </footer>
+    </div>  
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
