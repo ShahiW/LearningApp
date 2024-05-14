@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Subject, Category, Question, Answer, Classroom
+from .models import Subject, Category, Question, Answer, Classroom, Score
 
 # Register your models here.
 admin.site.register(Subject)
 admin.site.register(Answer)
 admin.site.register(Classroom)
+admin.site.register(Score)
 
 
 @admin.register(Question)

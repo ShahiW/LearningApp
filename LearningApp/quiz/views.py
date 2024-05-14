@@ -4,6 +4,7 @@ from django.http import Http404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from uuid import UUID
+from django.db.models import Sum
 
 
 def home(request):
@@ -28,29 +29,7 @@ def categories(request, subject: str):
 
     else:
         raise Http404("Ooops! Diese Seite existiert leider nicht.")
-    
 
-@login_required
-def quiz_(request, c_id):
-    user = request.user
-    question = Question.objects.filter(category__id=c_id).first()
-
-    if question:
-        context = {
-            "category": Category.objects.get(id=c_id),
-            "question": question,
-            "answers": Answer.objects.filter(question__id=question.id),
-        }
-
-        return render(request, "quiz/quiz.html", context)
-    else:
-        raise Http404("Ooops! Diese Frage existiert leider nicht.")
-
-    # else:
-    messages.info(
-        request,
-        f"Toll { user.username }! Du hast das Quiz beendet. Dein Punktestand ist: <score>",
-    )
 
 
 @login_required
@@ -70,8 +49,14 @@ def quiz(request, c_id: UUID):
         }
 
         return render(request, "quiz/quiz.html", context)
-    else: 
-        raise Http404("Keine Fragen mehr!")
+    
+    else:
+        context = {
+            "score": Score.objects.filter(category__id=c_id).aggregate(Sum("value"))
+        }
+        return render(request, "quiz/quiz-finished.html", context)
+
+        #raise Http404("Keine Fragen mehr!")
 
     # else:
     messages.info(
