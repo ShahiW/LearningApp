@@ -70,3 +70,4 @@ class Score(BaseModel):
     category = models.ForeignKey(Category, related_name="+", on_delete=models.DO_NOTHING)
     question = models.ForeignKey(Question, related_name="+", on_delete=models.DO_NOTHING)
     value = models.IntegerField(null=False)
+

@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User  
-# from django.contrib.auth.models import AbstractUser
 from PIL import Image  # aus Pillow Lib importiere die Klasse Image
 from quiz.models import Subject, Classroom
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     # for profile picture
     image = models.ImageField(default='default.png', upload_to='profile_pics')
 
@@ -34,31 +34,30 @@ class Profile(models.Model):
             # Überschreibe die Bilddatei mit dem Thumbnail
             image.save(self.image.path)
 
-"""
-1.) https://docs.djangoproject.com/en/dev/topics/auth/default/#permissions-and-authorization
-2.) https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User
-3.) Auf Admin page permissions der jeweiligen Gruppe erteilen.
-"""
-
-# Tabelle Lehrer
-class Teacher(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=300)
-    last_name = models.CharField(max_length=300)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.last_name
     
 
-# Tabelle Schüler
-class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=300)
-    last_name = models.CharField(max_length=300)
+# Mapping Tabelle Student-Classroom
+class Student_Classroom(models.Model):
+    student = models.OneToOneField(User, on_delete=models.CASCADE)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.student} {self.classroom}"
+
+
+# Mapping Tabelle Teacher-Classroom
+class Teacher_Classroom(models.Model):
+    teacher = models.OneToOneField(User, on_delete=models.CASCADE)
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.teacher} {self.classroom}"
+
+
+# Mapping Tabelle Subject-Teacher
+class Subject_Teacher(models.Model):
+    teacher = models.OneToOneField(User, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.teacher} {self.subject}"

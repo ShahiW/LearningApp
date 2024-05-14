@@ -10,7 +10,6 @@ class UserRegisterForm(UserCreationForm):  # Diese Form erbt von der User creati
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']  # Reihenfolge in der Liste ist Reihenfolge im Frontend
-        user_permissions = ['Administrator', 'Teacher', 'Student']
 
 
 class UserUpdateForm(forms.ModelForm):
