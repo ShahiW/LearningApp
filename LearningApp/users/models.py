@@ -8,10 +8,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # for profile picture
-    image = models.ImageField(default='default.png', upload_to='profile_pics')
+    image = models.ImageField(default='default.png', upload_to='profile_pics') 
+
 
     def __str__(self):
         return f'{self.user.username} Profil'
+    
     
     def save(self, *args, **kwargs):
         # Speichere die Bilddatei. Das wäre eh passiert. Aber es soll noch eine Funktionalität ergänzt werden.
