@@ -15,13 +15,31 @@ class BaseModel(models.Model):
         abstract = True
 
 
+# Tabelle Klassenstufen
+class Grade(BaseModel):
+    klassenstufe = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.klassenstufe
+
+
 # Tabelle Fächer
 class Subject(BaseModel):
     name = models.CharField(max_length=100)
+    klassenstufe = models.ForeignKey(Grade, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.name
+    
 
+# Tabelle Kategorien
+class Category(BaseModel):
+    name = models.CharField(max_length=200)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name
+    
 
 # Tabelle Klassen
 class Classroom(BaseModel):
@@ -30,15 +48,6 @@ class Classroom(BaseModel):
 
     class Meta:
         ordering = ["name"]
-
-    def __str__(self):
-        return self.name
-
-
-# Tabelle Kategorien
-class Category(BaseModel):
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name

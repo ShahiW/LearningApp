@@ -63,3 +63,4 @@ class Subject_Teacher(models.Model):
 
     def __str__(self):
         return f"{self.teacher} {self.subject}"
+    

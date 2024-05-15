@@ -15,6 +15,7 @@ def about(request):
     return render(request, "quiz/about.html")
 
 
+
 @login_required
 def categories(request, subject: str):
     if Subject.objects.filter(name__iexact=subject).exists():
