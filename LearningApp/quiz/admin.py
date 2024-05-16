@@ -1,16 +1,17 @@
 from django.contrib import admin
-from .models import Subject, Category, Question, Answer, Classroom, Score, Grade
+from .models import Subject, Category, Question, Answer, Classroom, Score
 
-# Register your models here.
-admin.site.register(Classroom)
+
+# Register your models here
 admin.site.register(Score)
 
 
-# GRADE
-@admin.register(Grade)
-class GradeAdmin(admin.ModelAdmin):
+# CLASSROOM
+@admin.register(Classroom)
+class ClassroomAdmin(admin.ModelAdmin):
     list_display = (
-        "klassenstufe",
+        "class_number",
+        "class_character",
     )
 
 
@@ -22,6 +23,8 @@ class QuestionAdmin(admin.ModelAdmin):
         "question",
         "marks",
     )
+
+    list_filter = ["category"]
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
@@ -39,7 +42,10 @@ class AnswerAdmin(admin.ModelAdmin):
     list_display = (
         "question",
         "answer",
+        "is_correct",
     )
+
+    list_filter = ["is_correct", "question__category__grade"]
 
 
 # SUBJECT
@@ -47,7 +53,6 @@ class AnswerAdmin(admin.ModelAdmin):
 class SubjectAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "klassenstufe",
     )
 
 
@@ -57,7 +62,10 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "subject",
+        "grade",
     )
+
+    list_filter= ["grade", "subject"]
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
@@ -67,3 +75,8 @@ class CategoryAdmin(admin.ModelAdmin):
             form.base_fields["id"].disabled = True
         return form
     
+
+
+
+
+

@@ -1,18 +1,15 @@
 from django.contrib import admin
 from .models import (
     Profile,
-    Student_Classroom,
-    Teacher_Classroom,
-    Subject_Teacher,
+    StudentClassroom,
+    TeacherClassroom,
+    SubjectTeacher,
 )
 
 admin.site.register(Profile)
-# admin.site.register(Student_Classroom)
-admin.site.register(Teacher_Classroom)
-admin.site.register(Subject_Teacher)
 
-@admin.register(Student_Classroom)
-class Student_ClassroomAdmin(admin.ModelAdmin):
+@admin.register(StudentClassroom)
+class StudentClassroomAdmin(admin.ModelAdmin):
     list_display = (
         "student",
         "classroom",
@@ -26,3 +23,17 @@ class Student_ClassroomAdmin(admin.ModelAdmin):
     #     for field in ["category", "id"]:
     #         form.base_fields[field].disabled = True
     # return form
+
+
+@admin.register(SubjectTeacher)
+class SubjectTeacherAdmin(admin.ModelAdmin):
+    list_display = (
+        "teacher",
+    )
+
+
+@admin.register(TeacherClassroom)
+class TeacherClassroomAdmin(admin.ModelAdmin):
+    list_display = (
+        "teacher",
+        )

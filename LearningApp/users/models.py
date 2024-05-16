@@ -39,7 +39,7 @@ class Profile(models.Model):
     
 
 # Mapping Tabelle Student-Classroom
-class Student_Classroom(models.Model):
+class StudentClassroom(models.Model):
     student = models.OneToOneField(User, on_delete=models.CASCADE)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 
@@ -48,18 +48,18 @@ class Student_Classroom(models.Model):
 
 
 # Mapping Tabelle Teacher-Classroom
-class Teacher_Classroom(models.Model):
+class TeacherClassroom(models.Model):
     teacher = models.OneToOneField(User, on_delete=models.CASCADE)
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+    classroom = models.ManyToManyField(Classroom)
 
     def __str__(self):
         return f"{self.teacher} {self.classroom}"
 
 
 # Mapping Tabelle Subject-Teacher
-class Subject_Teacher(models.Model):
+class SubjectTeacher(models.Model):
     teacher = models.OneToOneField(User, on_delete=models.CASCADE)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    subject = models.ManyToManyField(Subject)
 
     def __str__(self):
         return f"{self.teacher} {self.subject}"
