@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Category, Subject, Question, Answer, Score
+from users.models import StudentClassroom
 from django.http import Http404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -15,15 +16,31 @@ def about(request):
     return render(request, "quiz/about.html")
 
 
+
 @login_required
 def categories(request, subject: str):
     if Subject.objects.filter(name__iexact=subject).exists():
-        context = {
-            "categories": Category.objects.filter(
-                subject__name__iexact=subject
-            ),  # iexact um upper-lower-case zu ignorieren
-            "subject": subject,
-        }
+        user = request.user
+        classrooms = StudentClassroom.objects.filter(student=user)  
+
+        # Check if Student (only students are in table StudentClassroom)
+        if classrooms :
+            grade = classrooms[0].classroom.class_number
+        
+            context = {
+                "categories": Category.objects.filter(
+                    subject__name__iexact=subject, grade=grade
+                ),  # iexact um upper-lower-case zu ignorieren
+                "subject": subject,
+            }
+
+        else:
+            context = {
+                "categories": Category.objects.filter(
+                    subject__name__iexact=subject
+                ),  # iexact um upper-lower-case zu ignorieren
+                "subject": subject,
+            }
 
         return render(request, "quiz/category.html", context)
 

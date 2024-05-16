@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Meine Models
 
-# Base Model, von dem geerbt wird
+# BASE MODEL, von dem geerbt wird
 class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
     created_at = models.DateField(auto_now_add=True)
@@ -15,35 +15,35 @@ class BaseModel(models.Model):
         abstract = True
 
 
-# Tabelle Fächer
+# Tabelle FÄCHER
 class Subject(BaseModel):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+    
 
-
-# Tabelle Klassen
+# Tabelle KLASSEN
 class Classroom(BaseModel):
-    name = models.CharField(max_length=10)
+    class_number = models.IntegerField(default=0)
+    class_character = models.CharField(max_length=10)
     subjects = models.ManyToManyField(Subject)
 
-    class Meta:
-        ordering = ["name"]
-
     def __str__(self):
-        return self.name
+        return f'{self.class_number} {self.class_character}'
 
 
-# Tabelle Kategorien
+# Tabelle KATEGORIEN
 class Category(BaseModel):
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    grade = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} ({self.grade})'
+    
 
-
+#Tabelle FRAGEN
 class Question(BaseModel):
     category = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     question = models.CharField(max_length=100)
@@ -53,6 +53,7 @@ class Question(BaseModel):
         return self.question
 
 
+# Tabelle ANTWORTEN
 class Answer(BaseModel):
     question = models.ForeignKey(
         Question, related_name="question_answer", on_delete=models.CASCADE
@@ -64,6 +65,7 @@ class Answer(BaseModel):
         return self.answer
     
 
+# Tabelle PUNKTE
 class Score(BaseModel):
     user = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, related_name="+", on_delete=models.DO_NOTHING)
