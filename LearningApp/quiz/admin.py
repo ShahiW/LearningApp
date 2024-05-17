@@ -1,6 +1,23 @@
 from django.contrib import admin
 from .models import Subject, Category, Question, Answer, Classroom, Score
 
+from django_admin_listfilter_dropdown.filters import (
+    DropdownFilter,
+    ChoiceDropdownFilter,
+    RelatedDropdownFilter,
+)
+
+
+class EntityAdmin(admin.ModelAdmin):
+    list_filter = (
+        # for ordinary fields
+        ("a_charfield", DropdownFilter),
+        # for choice fields
+        ("a_choicefield", ChoiceDropdownFilter),
+        # for related fields
+        ("a_foreignkey_field", RelatedDropdownFilter),
+    )
+
 
 # Register your models here
 admin.site.register(Score)
@@ -24,7 +41,7 @@ class QuestionAdmin(admin.ModelAdmin):
         "marks",
     )
 
-    list_filter = ["category"]
+    list_filter = ["category", "category__subject"]
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
@@ -42,10 +59,10 @@ class AnswerAdmin(admin.ModelAdmin):
     list_display = (
         "question",
         "answer",
-        "is_correct",
+        #"is_correct",
     )
 
-    list_filter = ["is_correct", "question__category__grade"]
+    list_filter = ["is_correct", "question__category__subject", "question__category"]
 
 
 # SUBJECT
@@ -53,6 +70,7 @@ class AnswerAdmin(admin.ModelAdmin):
 class SubjectAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "year",
     )
 
 
@@ -62,10 +80,10 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "subject",
-        "grade",
+        #"grade",
     )
 
-    list_filter= ["grade", "subject"]
+    list_filter= ["subject"]  # "grade",
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
