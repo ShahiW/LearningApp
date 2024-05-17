@@ -18,10 +18,10 @@ class BaseModel(models.Model):
 # Tabelle FÄCHER
 class Subject(BaseModel):
     name = models.CharField(max_length=100)
-    year = models.IntegerField(default=0)
+    class_number = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'{self.name} {self.year}'
+        return f'{self.name} {self.class_number}'
     
 
 # Tabelle KLASSEN

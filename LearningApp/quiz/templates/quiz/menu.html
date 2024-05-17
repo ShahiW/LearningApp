@@ -25,14 +25,14 @@
         </li>
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="subjects" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
             <ul class="dropdown-menu">
-                {% for subject in subjects %}
+                {% for s in subjects %}
                     <li>
                         {% if user.is_staff %}
-                            <a class="dropdown-item" href="{% url 'categories' subject %}">{{ subject }}</a>
+                            <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s }}</a>
                         {% else %}
-                            <a class="dropdown-item" href="{% url 'categories' subject %}">{{ subject.name }}</a>
+                            <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s.name }}</a>
                         {% endif %}
                     </li>
                 {% endfor %}
