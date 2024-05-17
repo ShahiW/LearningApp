@@ -70,7 +70,7 @@ class AnswerAdmin(admin.ModelAdmin):
 class SubjectAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "year",
+        "class_number",
     )
 
 

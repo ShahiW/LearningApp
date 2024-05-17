@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User  
 from PIL import Image  # aus Pillow Lib importiere die Klasse Image
+import glob
+import os
+import random
+
 from quiz.models import Subject, Classroom
 
 
@@ -8,8 +12,20 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # for profile picture
-    image = models.ImageField(default='default.png', upload_to='profile_pics') 
+    image = models.ImageField(default='avatar1.png', upload_to='profile_pics') 
 
+
+    # neue Idee für random Bilder aus einer Liste:
+    # image_list = []
+    # for filename in glob.glob("*.png"):
+    #     im = Image.open(filename)
+    #     image_list.append(im)
+
+    #     for img in image_list: 
+    #         choice = random.randint(0, len(image_list) - 1)
+    #         random_image = image_list[
+    #             choice
+    #         ]  
 
     def __str__(self):
         return f'{self.user.username} Profil'

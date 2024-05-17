@@ -17,29 +17,31 @@ def about(request):
 
 
 @login_required
-def categories(request, subject: str):
-    if Subject.objects.filter(name__iexact=subject).exists():
-        user = request.user
-        classrooms = StudentClassroom.objects.filter(student=user)  
+def subjects(request):
+    user = request.user
+    classrooms = StudentClassroom.objects.filter(studet=user)
 
-        # Check if Student (only students are in table StudentClassroom)
-        if classrooms :
-            student_year = classrooms[0].classroom.class_number
-        
-            context = {
-                "categories": Category.objects.filter(
-                    subject__name__iexact=subject, subject__year=student_year
-                ),  # iexact um upper-lower-case zu ignorieren
-                "subject": subject,
-            }
+    if classrooms: 
+        student_year = classrooms[0].classroom.class_number
+        context = {"subjects": Subject.objects.filter(class_number=student_year)}
 
-        else:
-            context = {
-                "categories": Category.objects.filter(
-                    subject__name__iexact=subject
-                ),  # iexact um upper-lower-case zu ignorieren
-                "subject": subject,
-            }
+    else:
+        context = {"subjects": Subject.objects.all()}
+
+    return render(request, "quiz/categories.html", context)
+
+
+@login_required
+def categories(request, subject: str, class_number: int):
+    if Subject.objects.filter(name__iexact=subject, class_number=class_number).exists():
+
+        context = {
+            "categories": Category.objects.filter(
+                subject__name__iexact=subject, subject__class_number=class_number
+            ),  # iexact um upper-lower-case zu ignorieren
+            "subject": subject,
+            "class_number": class_number,
+        }
 
         return render(request, "quiz/category.html", context)
 
