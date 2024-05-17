@@ -16,7 +16,6 @@ def about(request):
     return render(request, "quiz/about.html")
 
 
-
 @login_required
 def categories(request, subject: str):
     if Subject.objects.filter(name__iexact=subject).exists():
@@ -25,11 +24,11 @@ def categories(request, subject: str):
 
         # Check if Student (only students are in table StudentClassroom)
         if classrooms :
-            grade = classrooms[0].classroom.class_number
+            student_year = classrooms[0].classroom.class_number
         
             context = {
                 "categories": Category.objects.filter(
-                    subject__name__iexact=subject, grade=grade
+                    subject__name__iexact=subject, subject__year=student_year
                 ),  # iexact um upper-lower-case zu ignorieren
                 "subject": subject,
             }
@@ -46,7 +45,6 @@ def categories(request, subject: str):
 
     else:
         raise Http404("Ooops! Diese Seite existiert leider nicht.")
-
 
 
 @login_required

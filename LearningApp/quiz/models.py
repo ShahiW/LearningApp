@@ -18,9 +18,10 @@ class BaseModel(models.Model):
 # Tabelle FÄCHER
 class Subject(BaseModel):
     name = models.CharField(max_length=100)
+    year = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} {self.year}'
     
 
 # Tabelle KLASSEN
@@ -37,10 +38,12 @@ class Classroom(BaseModel):
 class Category(BaseModel):
     name = models.CharField(max_length=200)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    grade = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
     def __str__(self):
-        return f'{self.name} ({self.grade})'
+        return f'{self.name}' # ({self.grade})'
     
 
 #Tabelle FRAGEN
