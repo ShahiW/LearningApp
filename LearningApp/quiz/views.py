@@ -68,9 +68,10 @@ def quiz(request, c_id: UUID):
         return render(request, "quiz/quiz.html", context)
     
     else:
-        context = {
-            "score": Score.objects.filter(category__id=c_id).aggregate(Sum("value"))
-        }
+        quiz_score = Score.objects.filter(category__id=c_id).aggregate(Sum("value", default=0))["value__sum"]
+    
+        context = {"score": quiz_score}
+        # score zurücksetzen evtl nach dem rendern
         return render(request, "quiz/quiz-finished.html", context)
 
         #raise Http404("Keine Fragen mehr!")

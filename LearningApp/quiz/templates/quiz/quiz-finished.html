@@ -12,21 +12,9 @@
         <div class="grid-container question-answer">
 
                 <div class="question"><b>Geschafft!</br> Du hast das Quiz beendet.</br> Deine Punktzahl ist: </b> 
-                {% for key, value in score.items %}
-                    {{ value }}
-                {% endfor %}
+                    {{ score }}
                 </div>
 
-
-                {# Antwort Buttons #}
-                {# IDEE: mit sliceing jede antwort einzeln ansprechen und ins grid layout packen. Grid layout: row 1, col1 und col2. row2, col1 und col2 #}
-                <!--<div class="grid-container answers">-->
-                    {% for answer in answers %}
-                    <!--<div class="grid-item answer-button">-->
-                        <a class=" grid-item btn btn-success" href="{% url 'check_answer' answer.id %}" role="button">{{ answer }}</a>
-                    <!--</div>-->
-                    {% endfor %}
-                <!--</div>-->
         </div>
 
         {# Nach "weiter" soll das Ergebnis/die Punktzahl kommen #}

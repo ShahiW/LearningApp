@@ -15,7 +15,7 @@ def available_subjects(request):
 
         if classrooms:
             student_year = classrooms[0].classroom.class_number
-            return {"subjects": Subject.objects.filter(year=student_year)}
+            return {"subjects": Subject.objects.filter(class_number=student_year)}
         else:
             return {"subjects": Subject.objects.all()}
         
