@@ -1,4 +1,4 @@
-# LearningApp - Django Project
+# Learning App - Django Project
 
 ![Screenshot learningApp](./pictures/LearningApp.png)
 
