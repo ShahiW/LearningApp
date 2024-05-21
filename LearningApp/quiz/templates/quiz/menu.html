@@ -15,10 +15,11 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
-
+        {% if user.is_staff %}
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+        <a class="nav-link" href="{% url 'admin:index' %}">Lehrerbereich</a>
         </li>
+        {% endif %}
 
         <li class="nav-item">
         <a class="nav-link" href="{% url 'about' %}">About</a>

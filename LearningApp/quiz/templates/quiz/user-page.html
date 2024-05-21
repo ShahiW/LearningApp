@@ -1,0 +1,45 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+
+<div class="welcome">
+    <h1 id="willkommen">Willkommen {{ user }}!</h1>
+</div>
+
+<div class="card w-100 mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><b>Dein zufälliges Quiz von heute:</b></h5><hr>
+    <h3 class="card-text">{{ random_category }}</p>
+    <a href="{% url 'quiz' random_category.id %}" class="btn btn-primary">Los geht's!</a>
+        <a class="btn btn-success" href="javascript: location.reload();" role="button">neu</a>
+  </div>
+</div>
+
+
+<!--
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action active" aria-current="true">
+                    To Do
+                </a>
+                {% for q_left in quizzes_left %}
+                <a href="#" class="list-group-item list-group-item-action">{{ q_left }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action active" aria-current="true">
+                    Erledigt
+                </a>
+                {% for q_done in quizzes_done %}
+                <a href="#" class="list-group-item list-group-item-action">{{ q_done.category.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+-->
+{% endblock %}

@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from uuid import UUID
 from django.db.models import Sum
+from random import choice
 
 
 def home(request):
@@ -19,7 +20,7 @@ def about(request):
 @login_required
 def subjects(request):
     user = request.user
-    classrooms = StudentClassroom.objects.filter(studet=user)
+    classrooms = StudentClassroom.objects.filter(student=user)
 
     if classrooms: 
         student_year = classrooms[0].classroom.class_number
@@ -52,6 +53,8 @@ def categories(request, subject: str, class_number: int):
 @login_required
 def quiz(request, c_id: UUID):
     user = request.user
+    # Gesamtpunktzahl für Quiz
+    total_score = Question.objects.filter(category__id=c_id).aggregate(Sum("marks", default=0))["marks__sum"]
 
     questions = Question.objects.raw("""select quiz_question.id, quiz_question.question 
                                     from quiz_question left join quiz_score on quiz_question.id = quiz_score.question_id 
@@ -70,7 +73,10 @@ def quiz(request, c_id: UUID):
     else:
         quiz_score = Score.objects.filter(category__id=c_id, user=user).aggregate(Sum("value", default=0))["value__sum"]
 
-        context = {"score": quiz_score}
+        context = {
+            "score": quiz_score,
+            "total_score": total_score,
+        }
 
         response = render(request, "quiz/quiz-finished.html", context)
         
@@ -107,3 +113,34 @@ def check_answer(request, a_id):
     )
 
     return quiz(request, category.id)
+
+
+@login_required
+def user_page(request):
+    user = request.user
+    if user.is_staff:
+        return render(request, "quiz/base.html")
+
+    else:
+        classrooms = StudentClassroom.objects.filter(student=request.user)
+        student_class = classrooms[0].classroom.class_number
+        quizzes_done = StudentQuizScore.objects.filter(user=request.user)
+        quizzes_left_ids = (
+            Category.objects.filter(subject__class_number=student_class)
+            .exclude(id__in=[c.category.id for c in quizzes_done])
+            .values_list("id", flat=True)
+        )
+
+        if quizzes_left_ids:
+            random_id = choice(quizzes_left_ids)
+
+            context = {"random_category": Category.objects.get(id=random_id)}
+
+        else:
+            quizzes_id = Category.objects.filter(subject__class_number=student_class).values_list('id', flat=True)
+
+            random_id = choice(quizzes_id)
+
+            context = {"random_category": random_id}
+
+        return render(request, "quiz/user-page.html", context)

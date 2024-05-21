@@ -11,15 +11,15 @@
         
         <div class="grid-container question-answer">
 
-                <div class="question"><b>Geschafft!</br> Du hast das Quiz beendet.</br> Deine Punktzahl ist: </b> 
-                    {{ score }}
+                <div class="question"><b>Geschafft!</br> Du hast das Quiz beendet.</br> Du hast: 
+                    {{ score }} von {{ total_score }} Punkten erreicht.</b> 
                 </div>
 
         </div>
 
         {# Nach "weiter" soll das Ergebnis/die Punktzahl kommen #}
         <div class="qa-button">
-            <a class="btn btn-success" href="{% url 'home' %}">Weiter</a>
+            <a class="btn btn-success" href="{% url 'user-page' %}">Weiter</a>
         </div>
 
     </div>
