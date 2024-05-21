@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from .models import Category, Subject, Question, Answer, Score
-from users.models import StudentClassroom
+from users.models import StudentClassroom, StudentQuizScore
 from django.http import Http404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from uuid import UUID
 from django.db.models import Sum
+from random import choice
 
 
 def home(request):
@@ -19,7 +20,7 @@ def about(request):
 @login_required
 def subjects(request):
     user = request.user
-    classrooms = StudentClassroom.objects.filter(studet=user)
+    classrooms = StudentClassroom.objects.filter(student=user)
 
     if classrooms: 
         student_year = classrooms[0].classroom.class_number
@@ -52,6 +53,8 @@ def categories(request, subject: str, class_number: int):
 @login_required
 def quiz(request, c_id: UUID):
     user = request.user
+    # Gesamtpunktzahl für Quiz
+    total_score = Question.objects.filter(category__id=c_id).aggregate(Sum("marks", default=0))["marks__sum"]
 
     questions = Question.objects.raw("""select quiz_question.id, quiz_question.question 
                                     from quiz_question left join quiz_score on quiz_question.id = quiz_score.question_id 
@@ -68,18 +71,22 @@ def quiz(request, c_id: UUID):
         return render(request, "quiz/quiz.html", context)
     
     else:
+        quiz_score = Score.objects.filter(category__id=c_id, user=user).aggregate(Sum("value", default=0))["value__sum"]
+
         context = {
-            "score": Score.objects.filter(category__id=c_id).aggregate(Sum("value"))
+            "score": quiz_score,
+            "total_score": total_score,
         }
-        return render(request, "quiz/quiz-finished.html", context)
 
-        #raise Http404("Keine Fragen mehr!")
-
-    # else:
-    messages.info(
-        request,
-        f"Toll { user.username }! Du hast das Quiz beendet. Dein Punktestand ist: <score>",
-    )
+        response = render(request, "quiz/quiz-finished.html", context)
+        
+        # quiz score in studentquizscore speichern
+        subject = Subject.objects.get(category__id=c_id)#
+        category = Category.objects.get(id=c_id)
+        StudentQuizScore.objects.update_or_create(user=user, subject=subject, category=category, defaults={"value": quiz_score})
+        # score zurücksetzen
+        Score.objects.filter(category__id=c_id, user=user).update(value=None)
+        return response
 
 
 @login_required
@@ -92,24 +99,48 @@ def check_answer(request, a_id):
     user = request.user
 
     if answer.is_correct:
-        score = Score(
-            user = user,
-            subject = subject,
-            category = category,
-            question = question,
-            value = question.marks,
-        )
-        score.save()
-    
+        score = question.marks
     else:
-        messages.info(request, f"Leider falsch. Die richtige Antwort ist { right_answer }")
-        score = Score(
-            user = request.user,
-            subject = subject,
-            category = category,
-            question = question,
-            value = 0,
-        )
-        score.save()
+        score = 0
+        messages.info(request, f'Leider falsch. Die richtige Antwort war "{ right_answer }".')
+
+    Score.objects.update_or_create(
+        user=user,
+        subject=subject,
+        category=category,
+        question = question,
+        defaults={"value": score},
+    )
 
     return quiz(request, category.id)
+
+
+@login_required
+def user_page(request):
+    user = request.user
+    if user.is_staff:
+        return render(request, "quiz/base.html")
+
+    else:
+        classrooms = StudentClassroom.objects.filter(student=request.user)
+        student_class = classrooms[0].classroom.class_number
+        quizzes_done = StudentQuizScore.objects.filter(user=request.user)
+        quizzes_left_ids = (
+            Category.objects.filter(subject__class_number=student_class)
+            .exclude(id__in=[c.category.id for c in quizzes_done])
+            .values_list("id", flat=True)
+        )
+
+        if quizzes_left_ids:
+            random_id = choice(quizzes_left_ids)
+
+            context = {"random_category": Category.objects.get(id=random_id)}
+
+        else:
+            quizzes_id = Category.objects.filter(subject__class_number=student_class).values_list('id', flat=True)
+
+            random_id = choice(quizzes_id)
+
+            context = {"random_category": random_id}
+
+        return render(request, "quiz/user-page.html", context)

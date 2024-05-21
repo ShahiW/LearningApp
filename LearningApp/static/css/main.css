@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-    color: green;
+    color: #008000;
     text-align: center;
 }
 
@@ -16,7 +16,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.card-header,
+.card-title {
     color: #444444;
 }
 
@@ -146,7 +148,6 @@ p {
     color: #444444;
 }
 
-
 .container-test {
     background-color: #c1ddf390;
     padding: 1em;
@@ -154,3 +155,29 @@ p {
     margin-top: 10px;
 }
 
+/* user-page.html */
+
+/* auskommentiert, weil die listen mit ToDo und Erledigt grad nicht gebraucht werden.
+.list-group-item.list-group-item-action.active {
+    background-color: green;
+}
+
+.list-group {
+    padding: 1.5em;
+}
+*/
+
+.card {
+    background-color: #c1ddf380;
+    margin-top: 50px;
+}
+
+.welcome {
+    margin-top: 50px;
+}
+
+.icon-refresh {
+    border-radius: 40%;
+    font-size: 20px;
+    background-color: #00800080;
+}

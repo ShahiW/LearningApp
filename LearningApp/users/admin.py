@@ -4,6 +4,7 @@ from .models import (
     StudentClassroom,
     TeacherClassroom,
     SubjectTeacher,
+    StudentQuizScore,
 )
 
 admin.site.register(Profile)
@@ -37,3 +38,13 @@ class TeacherClassroomAdmin(admin.ModelAdmin):
     list_display = (
         "teacher",
         )
+    
+
+@admin.register(StudentQuizScore)
+class StudentQuizScoreAdmin(admin.ModelAdmin):
+    list_display = (
+        "user", 
+        "subject",
+        "category",
+        "value",
+    )
