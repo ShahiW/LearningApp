@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User  
 from PIL import Image  # aus Pillow Lib importiere die Klasse Image
-import glob
-import os
-import random
+# import glob
+# import os
+# import random
 
-from quiz.models import Subject, Classroom
+from quiz.models import Subject, Classroom, Category
 
 
 class Profile(models.Model):
@@ -79,4 +79,12 @@ class SubjectTeacher(models.Model):
 
     def __str__(self):
         return f"{self.teacher} {self.subject}"
+    
+
+# mapping Tabelle für StudentScore
+class StudentQuizScore(models.Model):
+    user = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, related_name="+", on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, related_name="+", on_delete=models.DO_NOTHING)
+    value = models.IntegerField(null=False)
     
