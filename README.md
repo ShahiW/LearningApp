@@ -4,7 +4,13 @@
 
 With this project, I wanted to create an app that would allow a school to offer exercises for its students. Teachers have the opportunity to create small quizzes for their classes. The categories and questions/answers can be customized and deleted/updated. At the end of a quiz, a score is calculated and saved. This is set by the teacher themselves. In this way, teachers can measure and compare the progress of their students.
 
-![Screenshot learningApp](./pictures/LearningApp.png) ![Screenshot2 learningApp](./pictures/LearningAppScreenshot2.png)
+__Student View with random quiz on homepage:__
+
+![Screenshot learningApp](./pictures/LearningApp.png) 
+
+__Teacher View with "Lehrerbereich" (Admin site with staff role):__
+
+![Screenshot2 learningApp](./pictures/LearningAppScreenshot2.png)
 
 ## Future ideas
 
