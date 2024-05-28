@@ -71,8 +71,8 @@ class Answer(BaseModel):
 # Tabelle PUNKTE
 class Score(BaseModel):
     user = models.ForeignKey(User, related_name="+", on_delete=models.CASCADE)
-    subject = models.ForeignKey(Subject, related_name="+", on_delete=models.DO_NOTHING)
-    category = models.ForeignKey(Category, related_name="+", on_delete=models.DO_NOTHING)
-    question = models.ForeignKey(Question, related_name="+", on_delete=models.DO_NOTHING)
+    subject = models.ForeignKey(Subject, related_name="+", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name="+", on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, related_name="+", on_delete=models.CASCADE)
     value = models.IntegerField(null=True)
 

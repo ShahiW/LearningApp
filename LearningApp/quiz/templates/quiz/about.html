@@ -1,14 +1,13 @@
 {% extends 'quiz/base.html' %}
 {% block content %}
-    <h2>Hier kommt die Beschreibung zum Projekt</h2>
-    <div style='color: black;'>
-    {#{% for question in questions %}#}
-        {#{{ questions }}#}
-    {#{% endfor %}#}
-    {#{{questions}}#}
-    {#{{ answers }}#}
-    {% for answer in answers %}
-        <div>{{ answer.updated_at }} - {{ answer.answer }}</div>
-    {% endfor %}
+    <h2>Learning App</h2>
+    
+    <div class="qa-main">
+    <p>
+        Mit diesem Projekt wollte ich eine App entwickeln, die es einer Schule ermöglicht, Übungen für ihre Schüler anzubieten. 
+        Die Lehrkräfte haben die Möglichkeit, kleine Quizze für ihre Klassen zu erstellen. Die Kategorien und Fragen/Antworten 
+        können angepasst und gelöscht/aktualisiert werden. Am Ende eines Quiz wird eine Punktzahl berechnet und gespeichert. 
+        Diese wird vom Lehrer selbst festgelegt. Auf diese Weise können die Lehrer den Fortschritt ihrer Schüler messen und vergleichen.
+    </p>
     </div>
-{% endblock %}
+{% endblock content %}

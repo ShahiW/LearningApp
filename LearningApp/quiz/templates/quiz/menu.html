@@ -3,7 +3,7 @@
 
 
 
-    <a class="navbar-brand" href="{% url 'home' %}">Learning App</a>
+    <a class="navbar-brand link-secondary" href="{% url 'home' %}">Learning App</a>
     <button class="navbar-toggler" 
         type="button" data-bs-toggle="collapse" 
         data-bs-target="#navbarNavDropdown" 
@@ -17,16 +17,16 @@
 
         {% if user.is_staff %}
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin:index' %}">Lehrerbereich</a>
+        <a class="nav-link link-secondary" href="{% url 'admin:index' %}">Lehrerbereich</a>
         </li>
         {% endif %}
 
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'about' %}">About</a>
+        <a class="nav-link link-secondary" href="{% url 'about' %}">About</a>
         </li>
 
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
+        <!--<li class="nav-item dropdown">
+        <a class="nav-link link-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
             <ul class="dropdown-menu">
                 {% for s in subjects %}
                     <li>
@@ -39,7 +39,24 @@
                 {% endfor %}
             </ul>
             </ul>
-        </li>
+        </li>-->
+
+        <div class="dropdown">
+            <a class="nav-link link-secondary dropdown-toggle" href="">Fächer</a>
+
+            <ul class="dropdown-menu">
+                {% for s in subjects %}
+                    <li>
+                        {% if user.is_staff %}
+                        <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s }}</a>
+                        {% else %}
+                        <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s.name }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </ul>
     </div>
     
@@ -49,13 +66,13 @@
     {% if user.is_authenticated %}
         <form method="POST" action="{% url 'logout' %}" class="nav-item">
         {% csrf_token %}
-        <button type="submit" class="nav-link btn btn-link">Abmelden</button>
+        <button type="submit" class="nav-link btn btn-link link-secondary">Abmelden</button>
         </form>
-        <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
+        <a class="nav-item nav-link link-secondary" href="{% url 'profile' %}">{{ user.username }}</a>
         <img class="profile-picture" src="{{user.profile.image.url}}" alt="Profilbild">
     {% else %}
-        <a class="nav-item nav-link" href="{% url 'login' %}">Anmelden</a>
-        <a class="nav-item nav-link" href="{% url 'register' %}">Registrieren</a>
+        <a class="nav-item nav-link link-secondary" href="{% url 'login' %}">Anmelden</a>
+        <a class="nav-item nav-link link-secondary" href="{% url 'register' %}">Registrieren</a>
     {% endif %}
     </div>
 

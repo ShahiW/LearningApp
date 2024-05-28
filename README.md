@@ -1,19 +1,23 @@
 # Learning App - Django Project
 
-![Screenshot learningApp](./pictures/LearningApp.png)
+## About
 
-The idea behind the app is for children to have fun repeating and practicing what they have learned at school. 
+With this project, I wanted to create an app that would allow a school to offer exercises for its students. Teachers have the opportunity to create small quizzes for their classes. The categories and questions/answers can be customized and deleted/updated. At the end of a quiz, a score is calculated and saved. This is set by the teacher themselves. In this way, teachers can measure and compare the progress of their students.
 
-Both pupils and teachers get their own accounts. The teachers can track the progress of their students and the children have the opportunity to collect medals and master increasingly difficult tasks (levels). 
+![Screenshot learningApp](./pictures/LearningApp.png) ![Screenshot2 learningApp](./pictures/LearningAppScreenshot2.png)
 
-The app will also be expandable so that other subjects can be practiced - at the moment it is only one subject: math.
+## Future ideas
 
-One idea for the future would be to introduce a student chat that is monitored by the teachers.
+&#9744; introduce a student chat that is monitored by the teachers
 
+&#9744; for students: overview of all subjects with completed quizzes and ranking
+
+&#9744; for teachers: overview of all classes you teach with forwarding to the class and forwarding to individual students
 
 ## Setup
 
-Clone this repo, setup a venv and install django:
+1. Clone this repo.
+1. Setup a venv and install django:
 
 ``` bash
 python3 -m venv .venv
