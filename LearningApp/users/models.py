@@ -14,43 +14,55 @@ class Profile(models.Model):
     # for profile picture
     image = models.ImageField(default='avatar1.png', upload_to='profile_pics') 
 
-
-    # neue Idee für random Bilder aus einer Liste:
-    # image_list = []
-    # for filename in glob.glob("*.png"):
-    #     im = Image.open(filename)
-    #     image_list.append(im)
-
-    #     for img in image_list: 
-    #         choice = random.randint(0, len(image_list) - 1)
-    #         random_image = image_list[
-    #             choice
-    #         ]  
-
     def __str__(self):
         return f'{self.user.username} Profil'
     
     
     def save(self, *args, **kwargs):
         # Speichere die Bilddatei. Das wäre eh passiert. Aber es soll noch eine Funktionalität ergänzt werden.
-        super(Profile, self).save(*args, **kwargs)  
+        super().save(*args, **kwargs)  
         
         # Öffne die Bilddatei
         image = Image.open(self.image.path) 
-        # Checke Bilddateityp
-        if image.mode in ('JPG'):
-        # Konvertiere Image von JPG zu PNG
-            image = image.convert('RGB')
 
+        width, height = image.size  # Get dimensions
+
+        if width > 300 and height > 300:
+            # keep ratio but shrink down
+            image.thumbnail((width, height))
+
+        # check which one is smaller
+        if height < width:
+            # make square by cutting off equal amounts left and right
+            left = (width - height) // 2
+            right = (width + height) // 2
+            top = 0
+            bottom = height
+            image = image.crop((left, top, right, bottom))
+
+        elif width < height:
+            # make square by cutting off bottom
+            left = 0
+            right = width
+            top = 0
+            bottom = width
+            image = image.crop((left, top, right, bottom))
+
+        if width > 300 and height > 300:
+            image.thumbnail((300, 300))
+
+        image.save(self.image.path)
     
         # Check ob Bildgröße der Bedingung enspricht:
-        if image.height > 10 or image.width > 10:
-            # Tuple der Max-Größe, kann in Zukunft einfach angepasst werden
-            output_size = (300, 300)
-            # Mache dieses Bild zu einem Thumbnail
-            image.thumbnail(output_size)
-            # Überschreibe die Bilddatei mit dem Thumbnail
-            image.save(self.image.path)
+        # if image.height > 100 or image.width > 100:
+        #     # Tuple der Max-Größe, kann in Zukunft einfach angepasst werden
+        #     output_size = (300, 300)
+        #     # Mache dieses Bild zu einem Thumbnail
+        #     #image.thumbnail(output_size)
+        #     image.thumbnail(output_size)
+            
+        #     # Überschreibe die Bilddatei mit dem Thumbnail
+        #     image.save(self.image.path)
 
     
 

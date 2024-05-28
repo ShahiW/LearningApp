@@ -140,7 +140,8 @@ def user_page(request):
             quizzes_id = Category.objects.filter(subject__class_number=student_class).values_list('id', flat=True)
 
             random_id = choice(quizzes_id)
+            random_category = Category.objects.get(id=random_id)
 
-            context = {"random_category": random_id}
+            context = {"random_category": random_category}
 
         return render(request, "quiz/user-page.html", context)
