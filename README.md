@@ -28,7 +28,8 @@ Apply default migrations from Django:
 python manage.py migrate
 ```
 
-Install Bootstrap:
+Install requirements (in your venv):
 
 ```bash
+pip install -r requirements.txt
 ```
