@@ -44,7 +44,7 @@ class Profile(models.Model):
 
     
         # Check ob Bildgröße der Bedingung enspricht:
-        if image.height > 100 or image.width > 100:
+        if image.height > 10 or image.width > 10:
             # Tuple der Max-Größe, kann in Zukunft einfach angepasst werden
             output_size = (300, 300)
             # Mache dieses Bild zu einem Thumbnail
