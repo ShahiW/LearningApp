@@ -16,24 +16,38 @@ With this project, I wanted to create an app that would allow a school to offer 
 
 ## Setup
 
-1. Clone this repo.
-1. Setup a venv and install django:
+Clone this repo 
+
+```bash
+git clone git@github.com:ShahiW/LearningApp.git
+cd LearningApp
+```
+
+Setup a venv and install requirements:
 
 ``` bash
 python3 -m venv .venv
 source/.venv/bin/activate
 pip install --upgrade pip wheel setuptools
-pip install django
+pip install -r requirements.txt
 ```
 
-Apply default migrations from Django:
+Apply all migrations from Django:
 
 ```bash
 python manage.py migrate
 ```
 
-Install requirements (in your venv):
+Install Bootstrap into your static folder:
 
 ```bash
-pip install -r requirements.txt
+cd LearningApp/LearningApp/static
+npm install bootstrap
+cd -
+```
+
+Start App:
+
+```bash
+python manage.py runserver
 ```
