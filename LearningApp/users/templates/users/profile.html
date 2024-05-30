@@ -4,17 +4,18 @@
 
 <div class="content-section">
     <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="profilbild.jpg">
+        <!--<img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="profilbild.jpg">-->
         <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
+            <!--<h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>-->
         </div>
     </div>
     <form method="POST" enctype="multipart/form-data">{% csrf_token %}       
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Dein Profil</legend>
+            <legend class="border-bottom mb-4"><b>Dein Profil</b></legend>
             {{ u_form|crispy }}
             {{ p_form|crispy }}
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="profilbild.jpg">
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Aktualisieren</button>
