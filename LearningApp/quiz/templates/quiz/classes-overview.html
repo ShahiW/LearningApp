@@ -1,0 +1,24 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+
+{# Table with all classes taught. #}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Klasse</th>
+            <th scope="col">Fach</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>     
+            {% for class in classrooms %}       
+            <td> {{ class.teacher_id }} </td>
+            {% endfor %}
+
+            <td> test </td>
+        
+        </tr>
+    </tbody>
+</table>
+
+{% endblock content %}
