@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Category, Subject, Question, Answer, Score
-from users.models import StudentClassroom, StudentQuizScore
+from users.models import StudentClassroom, StudentQuizScore, SubjectTeacher, TeacherClassroom
 from django.http import Http404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -145,3 +145,17 @@ def user_page(request):
             context = {"random_category": random_category}
 
         return render(request, "quiz/user-page.html", context)
+    
+
+@login_required
+def classes_overview(request):
+    user = request.user
+
+    classrooms = TeacherClassroom.objects.filter(teacher=request.user)
+
+
+    context = {
+        "classrooms":classrooms
+    }
+
+    return render(request, "quiz/classes-overview.html", context)

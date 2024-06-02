@@ -12,6 +12,10 @@
     
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
+        
+        <li class="nav-item">
+        <a class="nav-link link-secondary" href="{% url 'about' %}">About</a>
+        </li>
 
         {% if user.is_staff %}
         <li class="nav-item">
@@ -19,25 +23,22 @@
         </li>
         {% endif %}
 
+        {% if user.is_staff %}
         <li class="nav-item">
-        <a class="nav-link link-secondary" href="{% url 'about' %}">About</a>
+        <a class="nav-link link-secondary" href="{% url 'classes-overview' %}">Klassenübersicht</a>
         </li>
-
+        {% else %}
         <div class="dropdown">
             <a class="nav-link link-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
-
             <ul class="dropdown-menu">
-                {% for s in subjects %}
-                    <li>
-                        {% if user.is_staff %}
-                        <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s }}</a>
-                        {% else %}
-                        <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s.name }}</a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+            {% for s in subjects %}
+                <li>
+                    <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s.name }}</a>
+                </li>
+            {% endfor %}
             </ul>
         </div>
+        {% endif %}
 
     </ul>
     </div>

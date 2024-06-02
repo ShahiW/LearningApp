@@ -52,17 +52,6 @@ class Profile(models.Model):
             image.thumbnail((300, 300))
 
         image.save(self.image.path)
-    
-        # Check ob Bildgröße der Bedingung enspricht:
-        # if image.height > 100 or image.width > 100:
-        #     # Tuple der Max-Größe, kann in Zukunft einfach angepasst werden
-        #     output_size = (300, 300)
-        #     # Mache dieses Bild zu einem Thumbnail
-        #     #image.thumbnail(output_size)
-        #     image.thumbnail(output_size)
-            
-        #     # Überschreibe die Bilddatei mit dem Thumbnail
-        #     image.save(self.image.path)
 
     
 
