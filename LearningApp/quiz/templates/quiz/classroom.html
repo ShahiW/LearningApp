@@ -1,0 +1,29 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+
+{#{{ classroom }}#}
+
+<h1>Schüler der {{ classroom.classroom }}</h1>
+
+{# Table with all students #}
+<div class="container-test">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"> Vorname </th>
+            <th scope="col"> Nachname </th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for student in students %}
+            <tr>
+                <td><a class="nav-link link-secondary" href="#"> {{ student.first_name }} </a></td> 
+                <td><a class="nav-link link-secondary" href="#"> {{ student.last_name }} </a></td> 
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock content %}

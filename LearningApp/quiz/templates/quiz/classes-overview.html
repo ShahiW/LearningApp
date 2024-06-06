@@ -1,24 +1,25 @@
 {% extends 'quiz/base.html' %}
 {% block content %}
 
+
+<div class="container-test">
 {# Table with all classes taught. #}
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Klasse</th>
-            <th scope="col">Fach</th>
+            <th scope="col">Klassen</th>
         </tr>
     </thead>
     <tbody>
-        <tr>     
-            {% for class in classrooms %}       
-            <td> {{ class.teacher_id }} </td>
+            {% for class in classrooms %}
+            <tr>
+                <td><a class="nav-link link-secondary" href="{% url 'classroom' class.id %}">{{ class }}</a></td>
+                {#<td> {{ class }} </td>#}
+            </tr>
             {% endfor %}
-
-            <td> test </td>
-        
-        </tr>
     </tbody>
 </table>
+
+</div>
 
 {% endblock content %}

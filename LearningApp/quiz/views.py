@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Category, Subject, Question, Answer, Score
+from .models import Category, Subject, Question, Answer, Score, Classroom
 from users.models import StudentClassroom, StudentQuizScore, SubjectTeacher, TeacherClassroom
 from django.http import Http404
 from django.contrib import messages
@@ -90,7 +90,7 @@ def quiz(request, c_id: UUID):
 
 
 @login_required
-def check_answer(request, a_id):
+def check_answer(request, a_id: UUID):
     answer = Answer.objects.get(id=a_id)
     question = answer.question
     right_answer = Answer.objects.get(is_correct=True, question=question)
@@ -150,12 +150,33 @@ def user_page(request):
 @login_required
 def classes_overview(request):
     user = request.user
+    teacher_classrooms = TeacherClassroom.objects.filter(teacher=user).first()
 
-    classrooms = TeacherClassroom.objects.filter(teacher=request.user)
+    # check if entry is available
+    if not teacher_classrooms:
+        raise Http404("Ooops! Diese Seite existiert leider nicht.")
+
+    else:
+        context = {
+            "classrooms": teacher_classrooms.classroom.all(),
+        }
+
+        return render(request, "quiz/classes-overview.html", context)
+    
+
+@login_required
+def classroom(request, classroom_id: UUID):
+    user = request.user
+
+    # UUID to classroom
+    classroom_object = StudentClassroom.objects.filter(classroom__id=classroom_id)
+    classroom = classroom_object[0]
+    students = [c.student for c in classroom_object]
 
 
     context = {
-        "classrooms":classrooms
+        "classroom": classroom,
+        "students": students,
     }
 
-    return render(request, "quiz/classes-overview.html", context)
+    return render(request, "quiz/classroom.html", context)
