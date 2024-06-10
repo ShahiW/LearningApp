@@ -191,3 +191,22 @@ if is_prod:
     USE_X_FORWARDED_PORT = True
     SESSION_COOKIE_SECURE = True
     CSRF_TRUSTED_ORIGINS = [f"https://{config['DOMAIN']}"]
+
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "handlers": {
+            "file": {
+                "level": "DEBUG",
+                "class": "logging.FileHandler",
+                "filename": "/var/log/learningapp/django.log",
+            },
+        },
+        "loggers": {
+            "django": {
+                "handlers": ["file"],
+                "level": "INFO",
+                "propagate": True,
+            },
+        },
+    }
