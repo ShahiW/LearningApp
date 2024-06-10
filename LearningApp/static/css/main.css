@@ -1,7 +1,12 @@
 /* HOME */
+html {
+    min-height: 100%;
+}
+
 body {
     /*background-image: url("../images/background.jpg");
     background-color: #00c4ce;*/
+    min-height: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #ffffff;
 }
@@ -23,15 +28,20 @@ h6,
 }
 
 p {
-    color: black;
+    color: #444444;
+}
+
+ul {
+    color: #444444;
 }
 
 .fullscreen {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
+    background-position: 50% 50%;
+    min-width: 100vw;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -156,17 +166,6 @@ p {
     margin-top: 10px;
 }
 
-/* user-page.html */
-
-/* auskommentiert, weil die listen mit ToDo und Erledigt grad nicht gebraucht werden.
-.list-group-item.list-group-item-action.active {
-    background-color: green;
-}
-
-.list-group {
-    padding: 1.5em;
-}
-*/
 
 .card {
     background-color: #c1ddf380;
@@ -181,4 +180,25 @@ p {
     border-radius: 40%;
     font-size: 20px;
     background-color: #00800080;
+}
+
+/* about.html */
+.about-container {
+    width: 100%;
+    background-color: #c1ddf390;
+    padding: 1em;
+    border-radius: 5px;
+    border: 1px solid #b5c3cc;
+    margin-top: 10px;
+}
+
+.idea, 
+.present, 
+.future {
+    width: 45em;
+    text-align: left;
+}
+
+.item > h3 {
+    color: #008000;
 }

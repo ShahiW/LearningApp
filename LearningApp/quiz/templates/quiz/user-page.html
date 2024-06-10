@@ -1,19 +1,29 @@
 {% extends 'quiz/base.html' %}
 {% block content %}
 
-<div class="welcome">
-    <h1 id="willkommen">Willkommen {{ user }}!</h1>
-</div>
 
+{% if not user.is_staff %}
 
-<div class="card w-100 mb-3">
-  <div class="card-body">
-    <h5 class="card-title"><b>Dein zufälliges Quiz von heute:</b></h5><hr>
-    <h3 class="card-text">{{ random_category }}</h3>
-    <a href="{% url 'quiz' random_category.id %}" class="btn btn-primary">Los geht's!</a>
-        <a class="btn btn-success" href="javascript: location.reload();" role="button">neu</a>
-  </div>
-</div>
+    <div class="welcome">
+        <h1 id="willkommen">Willkommen {{ user }}!</h1>
+    </div>
+
+    <div class="card w-100 mb-3">
+    <div class="card-body">
+        <h5 class="card-title"><b>Dein zufälliges Quiz von heute:</b></h5><hr>
+        <h3 class="card-text">{{ random_category }}</h3>
+        <a href="{% url 'quiz' random_category.id %}" class="btn btn-primary">Los geht's!</a>
+            <a class="btn btn-success" href="javascript: location.reload();" role="button">neu</a>
+    </div>
+    </div>
+
+{% else %}
+
+    <div class="welcome">
+        <h1 id="willkommen">Willkommen {{ user.first_name }}!</h1>
+    </div>
+
+{% endif %}
 
 
 {% endblock content %}

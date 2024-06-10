@@ -7,7 +7,6 @@ from PIL import Image  # aus Pillow Lib importiere die Klasse Image
 
 from quiz.models import Subject, Classroom, Category
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
