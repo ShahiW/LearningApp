@@ -1,13 +1,58 @@
 {% extends 'quiz/base.html' %}
 {% block content %}
-    <h2>Learning App</h2>
+
+
+<h1>Learning App</h1>
+
+
     
-    <div class="qa-main">
-    <p>
-        Mit diesem Projekt wollte ich eine App entwickeln, die es einer Schule ermöglicht, Übungen für ihre Schüler anzubieten. 
-        Die Lehrkräfte haben die Möglichkeit, kleine Quizze für ihre Klassen zu erstellen. Die Kategorien und Fragen/Antworten 
-        können angepasst und gelöscht/aktualisiert werden. Am Ende eines Quiz wird eine Punktzahl berechnet und gespeichert. 
-        Diese wird vom Lehrer selbst festgelegt. Auf diese Weise können die Lehrer den Fortschritt ihrer Schüler messen und vergleichen.
-    </p>
+    <div class="about-container idea">
+        <h3>IDEE</h3>
+        <p>
+            Ich habe die Learning App entwickelt, weil ich ein Projekt mit Django bauen wollte. Da ich keine Lust hatte den tausendsten Blog oder nur eine Umfrage App 
+            zu bauen, habe ich mir überlegt, was ich als MVP auf den Markt bringen könnte. Da ich Mama von einem Schulkind bin, 
+            habe ich mich für eine App entschieden, die so oder ähnlich tatsächlich an Schulen genutzt wrid &rarr; <i>LearningView</i>.
+        </p>
     </div>
+
+    <div class="about-container present">
+        <h3>ANFORDERUNGEN</h3>
+        <ul>
+            <li>Authentifizierung: Verifizierung der Nutzeridentität</li>
+            <li>Authorisierung: Permission-Handeling für unterschiedliche Benutzerrollen</li>
+            <li>Passwörter können zurückgesetzt werden</li>
+            <li>Profilerstellung: Jeder Nutzer bekommt ein Profil, auf dem ein Profilbild hochgeladen werden kann und Daten wie Nutzername und EMail geändert werden können.</li>
+            <li>Lehrer sehen im Menü andere Reiter als Schüler: Bspw. bekommen Lehrer Zugriff auf die Adminseite (mit eingeschränkten Rechten) und Schüler sehen Quizze für ihre Fächer</li>
+        </ul>
+    </div>
+
+    <div class="about-container future">
+        <h3>ZUKUNFT</h3>
+        <p>Folgendes würde ich in Zukunft gerne ergänzen:</p>
+        <ul>
+            <li>Schüler-Chat</li>
+            <li>Persönliche Nachrichten zwischen Lehrer und Schüler</li>
+            <li>Scoring soll spielerisch asl Münzen/Medaillen visualisert werden</li>
+            <li>ToDo Seite für die Schüler, wo sie ihre Quizze/Lernzeit/Lernziele planen können</li>
+        </ul>
+
+    </div>
+
+
+
+
 {% endblock content %}
+
+
+Idee
+Ich habe die Learning App entwickelt, da ich ein Projekt mit Django bauen wollte. Da ich keine Lust hatte den tausendsten Blog oder nur eine Umfrage App 
+zu bauen, habe ich mir überlegt, was ich als MVP auf den Markt bringen könnte. Da ich Mama von einem Schulkind bin, 
+habe ich mich für eine App entschieden, die so oder ähnlich tatsächlich an Schulen genutzt wrid &rarr; <i>LearningView</i>.
+
+<ul>
+    <li>Authentifizierung: Verifizierung der Nutzeridentität</li>
+    <li>Authorisierung: Permission-Handeling für unterschiedliche Benutzerrollen</li>
+    <li>Passwörter können zurückgesetzt werden</li>
+    <li>Profilerstellung: Jeder Nutzer bekommt ein Profil, auf dem ein Profilbild hochgeladen werden kann und Daten wie Nutzername und EMail geändert werden können.</li>
+    <li>Lehrer sehen im Menü andere Reiter als Schüler: Bspw. bekommen Lehrer Zugriff auf die Adminseite (mit eingeschränkten Rechten) und Schüler sehen Quizze für ihre Fächer</li>
+</ul>

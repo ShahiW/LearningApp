@@ -119,7 +119,7 @@ def check_answer(request, a_id: UUID):
 def user_page(request):
     user = request.user
     if user.is_staff:
-        return render(request, "quiz/base.html")
+        return render(request, "quiz/user-page.html")
 
     else:
         classrooms = StudentClassroom.objects.filter(student=request.user)
