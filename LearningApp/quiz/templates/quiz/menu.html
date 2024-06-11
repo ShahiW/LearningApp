@@ -17,7 +17,7 @@
         <a class="nav-link link-secondary" href="{% url 'about' %}">About</a>
         </li>
 
-        {% if user.is_authenticated or user.is_active%}
+        {% if user.is_authenticated %}
 
             {% if user.is_staff %}
                 <li class="nav-item">
