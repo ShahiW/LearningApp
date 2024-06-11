@@ -183,7 +183,7 @@ ul {
 }
 
 /* about.html */
-.about-container {
+.about-container.present {
     width: 100%;
     background-color: #c1ddf390;
     padding: 1em;
