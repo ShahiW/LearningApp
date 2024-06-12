@@ -153,7 +153,12 @@ USE_TZ = True
 STATIC_ROOT = "/var/www/learningapp.winderling.net/static"
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if is_prod:
+    MEDIA_ROOT = "/var/www/learningapp.winderling.net/media"
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = 'media/'
 
 # Default primary key field type
