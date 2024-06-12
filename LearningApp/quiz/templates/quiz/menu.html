@@ -20,27 +20,28 @@
         {% if user.is_authenticated %}
 
             {% if user.is_staff %}
-            <li class="nav-item">
-            <a class="nav-link link-secondary" href="{% url 'admin:index' %}">Lehrerbereich</a>
-            </li>
+                <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'admin:index' %}">Lehrerbereich</a>
+                </li>
             {% endif %}
 
             {% if user.is_staff %}
-            <li class="nav-item">
-            <a class="nav-link link-secondary" href="{% url 'classes-overview' %}">Klassenübersicht</a>
-            </li>
+                <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'classes-overview' %}">Klassenübersicht</a>
+                </li>
             {% else %}
-            <div class="dropdown">
-                <a class="nav-link link-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
-                <ul class="dropdown-menu">
-                {% for s in subjects %}
-                    <li>
-                        <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s.name }}</a>
-                    </li>
-                {% endfor %}
-                </ul>
-            </div>
+                <div class="dropdown">
+                    <a class="nav-link link-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fächer</a>
+                    <ul class="dropdown-menu">
+                    {% for s in subjects %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'categories' s.name s.class_number %}">{{ s.name }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
             {% endif %}
+        
         {% endif %}
 
     </ul>

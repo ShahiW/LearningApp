@@ -89,7 +89,6 @@ ul {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
-    /*column-gap: 5px;*/
 }
 
 .account-img {
@@ -102,6 +101,7 @@ ul {
     font-size: 2.5rem;
     color: #444444;
 }
+
 
 /* register.html + login.html */
 .main-text {
