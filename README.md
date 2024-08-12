@@ -1,8 +1,16 @@
 # Learning App - Django Project
 
-## About
+## Idee und Aufbau
 
-![idee](./pictures/idee.png)  ![aufbau](./pictures/aufbau.png)  ![schüler](./pictures/schüler.png)  ![lehrer](./pictures/lehrer.png)
+![idee](./pictures/idee.png)  ![aufbau](./pictures/aufbau.png)  
+
+## Nutzer: Schüler und Lehrer
+
+![schüler](./pictures/schüler.png)  ![lehrer](./pictures/lehrer.png)
+
+## Adminseite/Lehrerbereich
+
+
 
 __Student View with random quiz on homepage:__
 
