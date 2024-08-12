@@ -44,7 +44,7 @@ Da man vom Admin nach Registrierung als Nutzer hinzugefügt und Rollen vergeben 
 
 * __Schülerrolle__:
   * Benutzername: test-schüler
-  * passwort: ichbineintestschüler1234
+  * Passwort: ichbineintestschüler1234
 
 * __Lehrerrolle__:
   * Benutzername: test-lehrer
@@ -54,13 +54,13 @@ Da man vom Admin nach Registrierung als Nutzer hinzugefügt und Rollen vergeben 
 
 &#9744; Chatraum für die Schülerinnen und Schüler einer Klasse
 
-&#9744; Schüler:innen: Übersicht aller Fächer mit abgeschlossenen und noch zu erledigenden Quizze, inkl. Score/Ranking
+&#9744; Schüler:innen: Übersicht aller Fächer mit abgeschlossenen und noch zu erledigenden Quizzes, inkl. Score/Ranking
 
 &#9744; Lehrer:innen: Übersicht aller Klassen, die von der jeweiligen Lehrkraft unterrichtet werden mit der Möglichkeit zu jedem einzelnen Schüler/jeder einzelnen Schülerin zu naviegieren und deren Score/Ranking zu sehen
 
 ## Setup
 
-klone dieses Repo
+Klone dieses Repo:
 
 ```bash
 git clone git@github.com:ShahiW/LearningApp.git
