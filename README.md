@@ -6,11 +6,11 @@ With this project, I wanted to create an app that would allow a school to offer 
 
 __Student View with random quiz on homepage:__
 
-![Screenshot learningApp](./pictures/LearningApp.png) 
+![Screenshot learningApp](./pictures/test-schüler.png)
 
 __Teacher View with "Lehrerbereich" (Admin site with staff role):__
 
-![Screenshot2 learningApp](./pictures/LearningAppScreenshot2.png)
+![Screenshot2 learningApp](./pictures/test-lehrer.png)
 
 ## Future ideas
 
@@ -22,7 +22,7 @@ __Teacher View with "Lehrerbereich" (Admin site with staff role):__
 
 ## Setup
 
-Clone this repo 
+Clone this repo
 
 ```bash
 git clone git@github.com:ShahiW/LearningApp.git
