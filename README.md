@@ -78,7 +78,7 @@ pip install --upgrade pip wheel setuptools
 pip install -r requirements.txt
 ```
 
-Alle migrations von Django übernehmen:
+Alle Migrations übernehmen:
 
 ```bash
 python manage.py migrate
