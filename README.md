@@ -6,7 +6,7 @@ Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning Vie
 
 * __Authentifizierung__: Login und Nutzung der App nur als registrierte:r/angemeldete:r Nutzer:in
 
-* __Autorisierung__: Rollenverteilung &rarr; Lehrer:in, Schüler:in, Admin.
+* __Authorisierung__: Rollenverteilung &rarr; Lehrer:in, Schüler:in, Admin.
 
   * Rechte __Adminrolle__: View, write, change, delete &rarr; __all entities__
   * Rechte __Lehrerrolle__: View, write, change, delete &rarr; __eingeschränkt__
@@ -18,9 +18,9 @@ Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning Vie
 
 * __Personalisierte Anischt__: basierend auf Nutzerrechten sehen Schüler:innen andere Inhalte auf ihrer Landing Page als Lehrer:innen.
 
-## Nutzer:innen: 
+## Nutzer:innen
 
-### Schüler:innen 
+### Schüler:innen
 
 Die Schüler:innen sehen in ihrem Bereich nur die Fächer, die sie lernen, basierend auf ihrer Klassenstufe. Sie haben die Möglichkeit ein zufälliges Quiz auf ihrer User-Page zu machen. Ansonsten stehen ihnen die verschiedenen Quizze nach Fach &rarr;  Kategorie zur Verfügung.
 
@@ -40,7 +40,7 @@ Als Lehrer:in hat man Zugriff auf die Adminseite. Hier können die Lehrkräfte i
 
 __Hier &rarr;__ https://learningapp.winderling.net/
 
-Da man vom Admin nach Registrierung als Nutzer hinzugefügt und Rollen vergeben werden müssen, habe ich zwei Test-User angelegt: 
+Da man vom Admin nach Registrierung als Nutzer hinzugefügt und eine Rolle zugewisen werden muss, habe ich zwei Test-User angelegt: 
 
 * __Schülerrolle__:
   * Benutzername: test-schüler
@@ -54,9 +54,9 @@ Da man vom Admin nach Registrierung als Nutzer hinzugefügt und Rollen vergeben 
 
 &#9744; Chatraum für die Schülerinnen und Schüler einer Klasse
 
-&#9744; Schüler:innen: Übersicht aller Fächer mit abgeschlossenen und noch zu erledigenden Quizzes, inkl. Score/Ranking
+&#9744; Schüler:innen &rarr; Übersicht aller Fächer mit abgeschlossenen und noch zu erledigenden Quizzes, inkl. Score/Ranking
 
-&#9744; Lehrer:innen: Übersicht aller Klassen, die von der jeweiligen Lehrkraft unterrichtet werden mit der Möglichkeit zu jedem einzelnen Schüler/jeder einzelnen Schülerin zu naviegieren und deren Score/Ranking zu sehen
+&#9744; Lehrer:innen &rarr; Übersicht aller Klassen, die von der jeweiligen Lehrkraft unterrichtet werden mit der Möglichkeit zu jedem einzelnen Schüler/jeder einzelnen Schülerin zu navigieren und deren Score/Ranking zu sehen
 
 ## Setup
 
