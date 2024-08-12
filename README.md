@@ -50,7 +50,7 @@ Da man vom Admin nach Registrierung als Nutzer hinzugefügt und Rollen vergeben 
   * Benutzername: test-lehrer
   * Passwort: ichbineintestlehrer1234
 
-## Ergänzuungen für die Zukunft
+## Ergänzungen für die Zukunft
 
 &#9744; Chatraum für die Schülerinnen und Schüler einer Klasse
 
