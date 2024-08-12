@@ -2,7 +2,7 @@
 
 ## About
 
-With this project, I wanted to create an app that would allow a school to offer exercises for its students. Teachers have the opportunity to create small quizzes for their classes. The categories and questions/answers can be customized and deleted/updated. At the end of a quiz, a score is calculated and saved. This is set by the teacher themselves. In this way, teachers can measure and compare the progress of their students.
+![idee](./pictures/idee.png)  ![aufbau](./pictures/aufbau.png)  ![schüler](./pictures/schüler.png)  ![lehrer](./pictures/lehrer.png)
 
 __Student View with random quiz on homepage:__
 
@@ -11,6 +11,16 @@ __Student View with random quiz on homepage:__
 __Teacher View with "Lehrerbereich" (Admin site with staff role):__
 
 ![Screenshot2 learningApp](./pictures/test-lehrer.png)
+
+## Try it out yourself
+
+__If you want to take a closer look at the app head to__: https://learningapp.winderling.net/ and log in as a student or a teacher.
+
+__Student login__: Benutzername: test-schüler, Passwort: ichbineintestschüler1234
+
+__Teacher login__: Benutzername: test-lehrer, Passwort: ichbineintestlehrer1234
+
+Diese beiden Test-Accounts sind nötig, da ich als Admin nach einer neuen Registrierung dem User erstmal die nötigen Rechte vergeben müsste. 
 
 ## Future ideas
 
