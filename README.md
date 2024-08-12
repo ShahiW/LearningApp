@@ -50,6 +50,8 @@ Da man vom Admin nach Registrierung als Nutzer hinzugefügt und eine Rolle zugew
   * Benutzername: test-lehrer
   * Passwort: ichbineintestlehrer1234
 
+Wenn du magst, dann logge dich doch mit diesen Zugangsdaten ein und probiere die App selber aus.
+
 ## Ergänzungen für die Zukunft
 
 &#9744; Chatraum für die Schülerinnen und Schüler einer Klasse
