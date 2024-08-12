@@ -10,7 +10,7 @@ Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning Vie
 
   * Rechte __Adminrolle__: View, write, change, delete &rarr; __all entities__
   * Rechte __Lehrerrolle__: View, write, change, delete &rarr; __eingeschränkt__
-  * Rechte __Schülerroller__: __kein Zugriff__ auf Adminseite/Lehrerbereich
+  * Rechte __Schülerrolle__: __kein Zugriff__ auf Adminseite/Lehrerbereich
 
 * __Passwort zurücksetzen__ lassen: Verbindung zu Mail Server
 
