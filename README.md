@@ -1,53 +1,73 @@
-# Learning App - Django Project
+# Learning App - Django Projekt
 
 ## Idee und Aufbau
 
-![idee](./pictures/idee.png)  ![aufbau](./pictures/aufbau.png)  
+Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning View", die meine Tochter in der Grundschule nutzt, inspirieren lassen. Mit meiner App __Learning App__ wollte ich folgende Themne umsetzen:
 
-## Nutzer: Schüler und Lehrer
+* __Authentifizierung__: Login und Nutzung der App nur als registrierte:r/angemeldete:r Nutzer:in
 
-![schüler](./pictures/schüler.png)  ![lehrer](./pictures/lehrer.png)
+* __Autorisierung__: Rollenverteilung &rarr; Lehrer:in, Schüler:in, Admin.
 
-## Adminseite/Lehrerbereich
+  * Rechte __Adminrolle__: View, write, change, delete &rarr; __all entities__
+  * Rechte __Lehrerrolle__: View, write, change, delete &rarr; __eingeschränkt__
+  * Rechte __Schülerroller__: __kein Zugriff__ auf Adminseite/Lehrerbereich
 
+* __Passwort zurücksetzen__ lassen: Verbindung zu Mail Server
 
+* __Eigener Avatar__: eigene Bilder hochladen
 
-__Student View with random quiz on homepage:__
+* __Personalisierte Anischt__: basierend auf Nutzerrechten sehen Schüler:innen andere Inhalte auf ihrer Landing Page als Lehrer:innen.
+
+## Nutzer:innen: 
+
+### Schüler:innen 
+
+Die Schüler:innen sehen in ihrem Bereich nur die Fächer, die sie lernen, basierend auf ihrer Klassenstufe. Sie haben die Möglichkeit ein zufälliges Quiz auf ihrer User-Page zu machen. Ansonsten stehen ihnen die verschiedenen Quizze nach Fach &rarr;  Kategorie zur Verfügung.
 
 ![Screenshot learningApp](./pictures/test-schüler.png)
 
-__Teacher View with "Lehrerbereich" (Admin site with staff role):__
+### Lehrer:innen
+
+Als Lehrer:in hat man Zugriff auf die Adminseite. Hier können die Lehrkräfte ihre eigenen Quizze erstellen, anpassen und löschen. Außerdem können sie die Liste mit ihren Schüler:innen sehen, diese jedoch nicht anpassen.
 
 ![Screenshot2 learningApp](./pictures/test-lehrer.png)
 
-## Try it out yourself
+## Adminseite/Lehrerbereich
 
-__If you want to take a closer look at the app head to__: https://learningapp.winderling.net/ and log in as a student or a teacher.
+![admin](./pictures/admin.png)
 
-__Student login__: Benutzername: test-schüler, Passwort: ichbineintestschüler1234
+## Einfach ausprobieren
 
-__Teacher login__: Benutzername: test-lehrer, Passwort: ichbineintestlehrer1234
+__Hier &rarr;__ https://learningapp.winderling.net/
 
-Diese beiden Test-Accounts sind nötig, da ich als Admin nach einer neuen Registrierung dem User erstmal die nötigen Rechte vergeben müsste. 
+Da man vom Admin nach Registrierung als Nutzer hinzugefügt und Rollen vergeben werden müssen, habe ich zwei Test-User angelegt: 
 
-## Future ideas
+* __Schülerrolle__:
+  * Benutzername: test-schüler
+  * passwort: ichbineintestschüler1234
 
-&#9744; introduce a student chat that is monitored by the teachers
+* __Lehrerrolle__:
+  * Benutzername: test-lehrer
+  * Passwort: ichbineintestlehrer1234
 
-&#9744; for students: overview of all subjects with completed quizzes and ranking
+## Ergänzuungen für die Zukunft
 
-&#9744; for teachers: overview of all classes you teach with forwarding to the class and forwarding to individual students
+&#9744; Chatraum für die Schülerinnen und Schüler einer Klasse
+
+&#9744; Schüler:innen: Übersicht aller Fächer mit abgeschlossenen und noch zu erledigenden Quizze, inkl. Score/Ranking
+
+&#9744; Lehrer:innen: Übersicht aller Klassen, die von der jeweiligen Lehrkraft unterrichtet werden mit der Möglichkeit zu jedem einzelnen Schüler/jeder einzelnen Schülerin zu naviegieren und deren Score/Ranking zu sehen
 
 ## Setup
 
-Clone this repo
+klone dieses Repo
 
 ```bash
 git clone git@github.com:ShahiW/LearningApp.git
 cd LearningApp
 ```
 
-Setup a venv and install requirements:
+Setze venv auf und installiere Requirements:
 
 ``` bash
 python3 -m venv .venv
@@ -56,13 +76,13 @@ pip install --upgrade pip wheel setuptools
 pip install -r requirements.txt
 ```
 
-Apply all migrations from Django:
+Alle migrations von Django übernehmen:
 
 ```bash
 python manage.py migrate
 ```
 
-Install Bootstrap into your static folder:
+Installiere Bootstrap in deinen static Ordner:
 
 ```bash
 cd LearningApp/LearningApp/static
@@ -70,7 +90,7 @@ npm install bootstrap
 cd -
 ```
 
-Start App:
+Starte die App:
 
 ```bash
 python manage.py runserver
