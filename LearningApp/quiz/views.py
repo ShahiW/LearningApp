@@ -97,7 +97,6 @@ def check_answer(request, a_id: UUID):
     category = question.category
     subject = category.subject
     user = request.user
-
     if answer.is_correct:
         score = question.marks
     else:
