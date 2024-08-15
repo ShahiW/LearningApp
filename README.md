@@ -2,17 +2,17 @@
 
 ## Idee und Aufbau
 
-Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning View", die meine Tochter in der Grundschule nutzt, inspirieren lassen. Mit meiner App __Learning App__ wollte ich folgende Themne umsetzen:
+Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning View", die meine Tochter in der Grundschule nutzt, inspirieren lassen. Mit meinem Projekt __Learning App__ wollte ich folgende Themen umsetzen:
 
 * __Authentifizierung__: Login und Nutzung der App nur als registrierte:r/angemeldete:r Nutzer:in
 
 * __Authorisierung__: Rollenverteilung &rarr; Lehrer:in, Schüler:in, Admin.
 
-  * Rechte __Adminrolle__: View, write, change, delete &rarr; __all entities__
-  * Rechte __Lehrerrolle__: View, write, change, delete &rarr; __eingeschränkt__
-  * Rechte __Schülerrolle__: __kein Zugriff__ auf Adminseite/Lehrerbereich
+  * Rechte __Admin__: View, write, change, delete &rarr; __all entities__
+  * Rechte __Lehrer__: View, write, change, delete &rarr; __eingeschränkt__
+  * Rechte __Schüler__: __kein Zugriff__ auf Adminseite/Lehrerbereich
 
-* __Passwort zurücksetzen__ lassen: Verbindung zu Mail Server
+* __Passwort zurücksetzen__: Verbindung zu Mail Server
 
 * __Eigener Avatar__: eigene Bilder hochladen
 
