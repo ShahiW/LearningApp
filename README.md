@@ -28,11 +28,13 @@ Die Schüler:innen sehen in ihrem Bereich nur die Fächer, die sie lernen, basie
 
 ### Lehrer:innen
 
-Als Lehrer:in hat man Zugriff auf die Adminseite. Hier können die Lehrkräfte ihre eigenen Quizze erstellen, anpassen und löschen. Außerdem können sie die Liste mit ihren Schüler:innen sehen, diese jedoch nicht anpassen.
+Als Lehrer:in hat man Zugriff auf die Adminseite. Deshalb befindet sich im Menü jetzt der Reiter “Lehrerbereich”. Außerdem fehlt das tägliche Quiz und auch die Lerninhalte der Schüler. Dafür gibt es die Übersicht der eigenen Klassen. 
 
 ![Screenshot2 learningApp](./pictures/test-lehrer.png)
 
 ## Adminseite/Lehrerbereich
+
+In diesem Screenshot sieht man die Adminseite mit der Rolle Lehrer:in. Hier können die Lehrkräfte ihre eigenen Quizze erstellen, anpassen und löschen. Außerdem können sie die Liste mit ihren Schüler:innen sehen, diese jedoch nicht anpassen.
 
 ![admin](./pictures/admin.png)
 
