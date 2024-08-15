@@ -18,7 +18,7 @@ Für mein erstes Django Projekt habe ich mich von der Schüler-App "Learning Vie
 
 * __Personalisierte Anischt__: basierend auf Nutzerrechten sehen Schüler:innen andere Inhalte auf ihrer Landing Page als Lehrer:innen.
 
-## Nutzer:innen
+## Rollen
 
 ### Schüler:innen
 
